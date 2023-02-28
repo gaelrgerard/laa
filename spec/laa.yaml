@@ -1,0 +1,178 @@
+openapi: "3.0.3"
+info:
+  title: "LAA - SAM SM"
+  version: "1.0.0"
+  description: "This interface allows a Local Application Agent to manage to communicate with a SAM SM"
+tags:
+- name: "samApplicationManagementService"
+  description: "This service allows to receive request from LAA"
+servers:
+  - url: /gp/sam/
+    description: Production server
+paths:
+  /initiateInstallation:
+    post:
+      tags:
+      - "samApplicationManagementService"
+      summary: "This function initiates the SAM-SM installation procedure"
+      description: "This method shall be used by the LAA client to request to open session on SAM SM. LAA retrieves material from the SAM SD to be provided to the SAM-SM. On reception of this function call, the SAM-SM SHALL: 
+      
+      
+          •  Check if the installation on the current SAM SD is possible (contactless support, memory left..)
+          
+          
+          •  Create a SAM instalation session with the given identifier
+          
+          
+          •  Generate a script for the SAM service installation (including the ASP SD). This script can be generated dynamically (for instance in SCP11a) or can be only retrieved (for instance SCP11c) for this given SAM SD target. The session id for GP SE RAM session SHALL be reused.
+          
+
+        The SAM-SM MAY perform additional operations, which are out of scope of this specification."
+      parameters:
+        - name: sessionID
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/sessionId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "samEligibilityCommand"
+              properties:
+                samEligibilityCommand:
+                  $ref: "#/components/schemas/samEligibilityCommand"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                required:
+                - "samEligibilityResponse"
+                properties:
+                  samEligibilityResponse:
+                    $ref: "#/components/schemas/samEligibilityResponse"
+
+  /notification:
+    post:
+      tags:
+      - "samApplicationManagementService"
+      summary: "method used to notifiy the SAM SM"
+      description: "This function SHALL be called by the LAA to notify the SAM-SM that a SAM Application Management Operation has successfully been performed on the SAM SD."
+      parameters:
+        - name: sessionID
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/sessionId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "installationStep"
+              properties:
+                installationStep:
+                  $ref: "#/components/schemas/installationStep"
+                aspSdAid:
+                  $ref: "#/components/schemas/aid"
+      responses:
+        "200":
+          description: "OK"
+        "404":
+          description: Session id not found
+components:
+  schemas:
+    asn1Data:
+      description: "base 64 encoded asn1 data"
+      type: "string"
+      format: "byte"
+
+    secureElement:
+      type: "object"
+      properties:
+        seType:
+          type: "string"
+          enum:
+            - "eSE"
+            - "uicc"
+            - "euicc/removable"
+            - "euicc/embedded"
+            - "euicc/integrated"
+            - "notdefined"
+        seId:
+          type: "string"
+          example: "89001012012341234012345678901224"
+    aid:
+      type: "string"
+      pattern: "^([0-9A-F]{2}){5,16}$"
+      example: "A00001510000"
+
+    sessionId:
+      type: "string"
+      format: "uuid"
+      example: "0f96af97-f879-45a2-a011-ee7439df3804"
+
+    version:
+      type: "string"
+      example: "1.0.0"
+      
+    installationStep:
+      type: "string"
+      enum:
+            - "INSTALL"
+            - "PERSO"
+            - "DELETE"
+    deviceInfo:
+      type: "object"
+      properties:
+        openMobileApiVersion:
+          $ref: "#/components/schemas/version"
+    
+    samCertificate:
+      type: "object"
+      properties :
+        data: 
+          $ref: "#/components/schemas/asn1Data"
+        certificateFormat: 
+          type: "string"
+          enum:
+            - "x509"
+            - "GP"
+            
+    samEligibilityCommand:
+      description: "this command alow to perform an eligibility check"
+      type: "object"
+      required:
+        - "secureElement"
+        - "samVersion"
+        - "samSDEligibilityData"
+        - "deviceInfo"
+        - "samCertificates"
+      properties:
+        secureElement:
+          $ref: "#/components/schemas/secureElement"
+        samVersion:
+          $ref: "#/components/schemas/version"
+        samSDEligibilityData:
+          $ref: "#/components/schemas/asn1Data"
+        deviceInfo:
+          $ref: "#/components/schemas/deviceInfo"
+        samCertificates:
+          type: "array"
+          description: "sam certificate shall be ordered from the SAM SD certiicate (first in the list) to the SAM CA (last in the list)"
+          items:
+            $ref: "#/components/schemas/samCertificate"  
+  
+  
+
+    samEligibilityResponse:
+      description: "This is the data model for the sam eligibility Response."
+      type: "object"
+      properties:
+        gpseramuri:
+          type: string
+          format: uri
+          example: "https://sam-sm.server1.com/gp/seram/script1"

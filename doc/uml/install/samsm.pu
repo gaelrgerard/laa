@@ -1,0 +1,35 @@
+@startuml
+ 
+hide footbox
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowFontSize 11
+skinparam noteFontSize 11
+skinparam monochrome true
+skinparam lifelinestrategy solid
+ 
+"End User" -> "Device application" : installDeviceApplication
+"Device application" -> LAA : install(sessionId, samSMFQDN, localScriptUri=null)
+LAA -> "SAM SD" : GET_DATA(SAMEligibilityInfoTag)
+"SAM SD" --> LAA : SAMEligibilityInfo  
+LAA -> "SAM SD" : GET_DATA(CRDTag)
+"SAM SD" --> LAA : CRD
+LAA -> "SAM SD" : GET_DATA(CCITag)
+"SAM SD" --> LAA : CCI
+LAA -> "SAM SD" : GET_DATA(SAMCertifTag)
+"SAM SD" --> LAA : SAMCertifs
+"LAA" -> "SAM SM" : initiateInstallation(sessionId, SAMEligibilityInfos, DeviceInfo) 
+"SAM SM" -> "SAM SM" : retrieveOrGenerateScript(sessionId)
+"SAM SM" --> LAA : samEligibilityResponse(gpseramUri)
+ 
+LAA -> "End User" : requestUserConsentOrAuthentification
+rnote over "End User": allow
+LAA <-- "End User"
+ 
+rnote over "LAA", "SAM SM"
+     Process executeGPSERAMScript(gpseramUri)
+end rnote
+ 
+LAA --> "Device application" : notification(sessionId, aspSDAid, INSTALL)
+ 
+LAA --> "SAM SM" : notification(sessionId, aspSDAid, INSTALL)
+@enduml
