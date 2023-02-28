@@ -3,15 +3,15 @@ Local Applet Assistant (LAA)
 
 Introduction
 ------------
-LAA has been defined in [SAM Requirements](https://www.gsma.com/newsroom/wp-content/uploads//SAM.01-v1.0.pdf)
-LAA is a module in the device that provides the capability to manage SAM applications (called also SAM applets).
+[LAA](doc/LAA__Terminology_And_Definitions.md#LAA) has been defined in [SAM requirements](doc/LAA__References.md#SAMREQ).
+[LAA](doc/LAA__Terminology_And_Definitions.md#LAA) is a module in the device that provides the capability to manage SAM applications (called also SAM applets).
 
-Through the LAA, the End User is able to perform functions including, but not limited to, the following:
+Through the [LAA](doc/LAA__Terminology_And_Definitions.md#LAA), the End User is able to perform functions including, but not limited to, the following:
 •	View the SAM Services information.
-•	Manage (delete, upgrade, etc.) SAM applications on the SAM SD.
+•	Manage (delete, upgrade, etc.) SAM applications on the [SAM SD](doc/LAA__Terminology_And_Definitions.md#SAMSD).
 •	Select End User’s authentication and authorization methods (e.g. biometry, etc.).
 
-The LAA is responsible for installing SAM applications on the SAM SD. 
+The [LAA](doc/LAA__Terminology_And_Definitions.md#LAA) is responsible for installing SAM applications on the SAM SD. 
 
 To understand the protocol, please, refer to:
 

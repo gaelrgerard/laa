@@ -2,15 +2,26 @@ openapi: "3.0.3"
 info:
   title: "LAA - SAM SM"
   version: "1.0.0"
-  description: "This interface allows a Local Application Agent to manage to communicate with a SAM SM"
+  description: "This interface allows a Local Applet Assistant to manage exchanges with a SAM SM"
+  license:
+    name: MIT
+    url: 'https://opensource.org/licenses/MIT'
 tags:
 - name: "samApplicationManagementService"
   description: "This service allows to receive request from LAA"
 servers:
-  - url: /gp/sam/
-    description: Production server
+  - url: '{protocol}://{samfqdn}/gp/sam'
+    variables:
+      samfqdn:
+        default: localhost
+        description: sam server domain (or sam server domain + plus suffix) 
+      protocol:
+        enum:
+          - http
+          - https
+        default: https
 paths:
-  /initiateInstallation:
+  /install:
     post:
       tags:
       - "samApplicationManagementService"
@@ -21,7 +32,7 @@ paths:
           •  Check if the installation on the current SAM SD is possible (contactless support, memory left..)
           
           
-          •  Create a SAM instalation session with the given identifier
+          •  Create a SAM management session with the given identifier
           
           
           •  Generate a script for the SAM service installation (including the ASP SD). This script can be generated dynamically (for instance in SCP11a) or can be only retrieved (for instance SCP11c) for this given SAM SD target. The session id for GP SE RAM session SHALL be reused.
@@ -39,10 +50,10 @@ paths:
           application/json:
             schema:
               required:
-              - "samEligibilityCommand"
+              - "samInstallMsg"
               properties:
-                samEligibilityCommand:
-                  $ref: "#/components/schemas/samEligibilityCommand"
+                samInstallMsg:
+                  $ref: "#/components/schemas/samInstallMsg"
       responses:
         "200":
           description: "OK"
@@ -50,11 +61,42 @@ paths:
             application/json:
               schema:
                 required:
-                - "samEligibilityResponse"
+                - "samInstallResponse"
                 properties:
-                  samEligibilityResponse:
-                    $ref: "#/components/schemas/samEligibilityResponse"
-
+                  samInstallResponse:
+                    $ref: "#/components/schemas/samManagementResponse"
+  /delete:
+    post:
+      tags:
+      - "samApplicationManagementService"
+      summary: "This function initiates the SAM-SM delete procedure"
+      description: "This method shall be used by the LAA client to request the deletion of specific SAM Service identified by its asp AID"
+      parameters:
+        - name: sessionID
+          in: query
+          required: true
+          schema:
+            $ref: "#/components/schemas/sessionId"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              required:
+              - "aspSdAid"
+              properties:
+                aspSdAid:
+                  $ref: "#/components/schemas/aid"
+      responses:
+        "200":
+          description: "OK"
+          content:
+            application/json:
+              schema:
+                required:
+                - "samDeleteResponse"
+                properties:
+                  samDeleteResponse:
+                    $ref: "#/components/schemas/samManagementResponse"
   /notification:
     post:
       tags:
@@ -85,7 +127,7 @@ paths:
           description: Session id not found
 components:
   schemas:
-    asn1Data:
+    binData:
       description: "base 64 encoded asn1 data"
       type: "string"
       format: "byte"
@@ -133,16 +175,30 @@ components:
     
     samCertificate:
       type: "object"
+      required:
+        - "data"
+        - "certificateFormat"
       properties :
         data: 
-          $ref: "#/components/schemas/asn1Data"
+          $ref: "#/components/schemas/binData"
         certificateFormat: 
           type: "string"
           enum:
             - "x509"
             - "GP"
-            
-    samEligibilityCommand:
+    samInstallMsg:
+      description: "this msg alow to trigger an install on a SAM SD"
+      type: "object"
+      required:
+        - "samEligibilityData"
+        - "aspSdAid"
+      properties:
+        aspSdAid:
+          $ref: "#/components/schemas/aid"
+        samEligibilityData:
+          $ref: "#/components/schemas/samEligibilityData"
+    
+    samEligibilityData:
       description: "this command alow to perform an eligibility check"
       type: "object"
       required:
@@ -157,7 +213,7 @@ components:
         samVersion:
           $ref: "#/components/schemas/version"
         samSDEligibilityData:
-          $ref: "#/components/schemas/asn1Data"
+          $ref: "#/components/schemas/binData"
         deviceInfo:
           $ref: "#/components/schemas/deviceInfo"
         samCertificates:
@@ -168,8 +224,8 @@ components:
   
   
 
-    samEligibilityResponse:
-      description: "This is the data model for the sam eligibility Response."
+    samManagementResponse:
+      description: "This is the data model for the sam install or delete Response."
       type: "object"
       properties:
         gpseramuri:

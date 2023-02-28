@@ -9,6 +9,8 @@ Normative References
 |                                                   |                                                                           |
 |---------------------------------------------------|---------------------------------------------------------------------------|
 | Standard / Specification                          | Description                                                               |
+| [SAMREQ](https://www.gsma.com/newsroom/wp-content/uploads//SAM.01-v1.0.pdf))   | Secured Applications for Mobile - Requirements                  |
+| [SAMCONF](https://globalplatform.org/specs-library/)   | SAM Configuration for Consumer Device                  |
 | [OpenAPI](https://spec.openapis.org/oas/v3.0.3)   | Open API Initiative – OpenAPI Specification version 3.0                   |
 | [RFC2119](https://www.rfc-editor.org/rfc/rfc2119) | IETF – Key words for use in RFCs to Indicate Requirement Levels           |
 | [RFC2818](https://www.rfc-editor.org/rfc/rfc2119) | IETF – HTTP Over TLS                                                      |

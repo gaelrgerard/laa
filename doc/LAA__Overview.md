@@ -9,14 +9,9 @@ The following figure presents the SAM architecture and its environment. All word
 
 This documentation is focusing on the SAM04 interface.
 [GPSERAM](LAA__References.md#GPSERAM) is also used on this SAM04 interface.
-[SAM Configuration](LAA__References.md#SAMCONF) is focusing more on the [SAM SD](LAA__Terminology_And_Definitions.md#SAMSD)
-A [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and a [LAA](LAA__Terminology_And_Definitions.md#LAA) manage this protocol to allow the [LAA](LAA__Terminology_And_Definitions.md#LAA) to trigger a a [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement).
+[SAM Configuration](LAA__References.md#SAMCONF) is focusing more on the [SAM SD](LAA__Terminology_And_Definitions.md#SAMSD) part.
+A [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and a [LAA](LAA__Terminology_And_Definitions.md#LAA) manage this protocol to allow the [LAA](LAA__Terminology_And_Definitions.md#LAA) to trigger a [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement).
 
-While [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM), [Device](LAA__Terminology_And_Definitions.md#Device) and [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement) are physical entities, the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) are logical components, and the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) in this specification are to be considered as functions. These functions might be implemented as standalone applications or as libraries integrated inside larger business applications. In the LAA context, the terms [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) may be used interchangeably with *SAM SM function* and *Local Applet Assistant function*.
-
-Note that if the [Device](LAA__Terminology_And_Definitions.md#Device) embeds a [Trusted Execution Environment](LAA__Terminology_And_Definitions.md#TrustedExecutionEnvironment), the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) may be implemented in this [Trusted Execution Environment](LAA__Terminology_And_Definitions.md#TrustedExecutionEnvironment).  Otherwise, the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) is implemented in the [Rich Execution Environment](LAA__Terminology_And_Definitions.md#RichExecutionEnvironment) of the [Device](LAA__Terminology_And_Definitions.md#Device). In these two cases, the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) will have to use an API providing access to the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement) and allowing it to forward commands to an application in this [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement). This API is called an [SE Access API](LAA__Terminology_And_Definitions.md#SEAccessAPI) in this specification. The [SE Access API](LAA__Terminology_And_Definitions.md#SEAccessAPI) can be the [SIMalliance GlobalPlatform Open Mobile API](https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/) when the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) is implemented in the [Rich Execution Environment](LAA__Terminology_And_Definitions.md#RichExecutionEnvironment) (REE), and the [GlobalPlatform TEE Secure Element API](https://globalplatform.org/specs-library/tee-secure-element-api/) when the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) is implemented in the [Trusted Execution Environment](LAA__Terminology_And_Definitions.md#TrustedExecutionEnvironment) (TEE).
-
-More precisely, an [SE Access API](LAA__Terminology_And_Definitions.md#SEAccessAPI) usually provides mechanisms for a device application to open a connection with the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement) and then to open a logical channel with a card application in order to send *APDUs* to this application.
 
 Protocol design
 ---------------
@@ -37,35 +32,20 @@ This version of the specification defines the following [Data Format](LAA__Termi
 
 -   **JSON** as [Data Format](LAA__Terminology_And_Definitions.md#DataFormat)
 
-Others protocol layer elements may be defined in the future.
-
 This version of the specification defined the following [Protocol Binding](LAA__Terminology_And_Definitions.md#ProtocolBinding):
 
 -   **HTTP REST**, which uses HTTPS as [Transport](LAA__Terminology_And_Definitions.md#Transport) protocol and JSON as [Data Format](LAA__Terminology_And_Definitions.md#DataFormat).
 
-Others [Protocol Binding](LAA__Terminology_And_Definitions.md#ProtocolBinding) may be defined in the future.
 
 ### Management Session
 
-A [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and a [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) relies on a session identifier, named [sessionId](LAA__Terminology_And_Definitions.md#sessionId). The [sessionId](LAA__Terminology_And_Definitions.md#sessionId) is shared and used for all communications between the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM).
+A [LAA](LAA__Terminology_And_Definitions.md#LAA) and a [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) relies on a session identifier, named [sessionId](LAA__Terminology_And_Definitions.md#sessionId). The [sessionId](LAA__Terminology_And_Definitions.md#sessionId) is shared and used for all communications between the [LAA](LAA__Terminology_And_Definitions.md#LAA) and the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM).
 
 The session during which is performed some management tasks that are associated with one sessionId is called the [Management Session](LAA__Terminology_And_Definitions.md#ManagementSession).
 
-![Management Session](images/GP_SERAM__Management_Session.png)
+The [Management Session](LAA__Terminology_And_Definitions.md#ManagementSession) is started by the [LAA](LAA__Terminology_And_Definitions.md#DeviceApplication) and is then controlled until its end by the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM).
+Same [sessionId](LAA__Terminology_And_Definitions.md#sessionId) shall be used for the [GPSERAM](LAA__References.md#GPSERAM)  session.
 
-The [Management Session](LAA__Terminology_And_Definitions.md#ManagementSession) is started by the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and is then controlled until its end by the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM).
-
-### Protocol Steps
-
-As shown by the next figure, this protocol has three steps. First the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) is triggered by the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) with the [sessionId](LAA__Terminology_And_Definitions.md#sessionId) and the [RA Endpoint](LAA__Terminology_And_Definitions.md#RAEndpoint). It then negotiates the [Data Format](LAA__Terminology_And_Definitions.md#DataFormat) and [Transport](LAA__Terminology_And_Definitions.md#Transport) protocol to use with the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM). Finally, the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) make the task required for the [Management Session](LAA__Terminology_And_Definitions.md#ManagementSession).
-
-![Protocol Steps](images/GP_SERAM__Protocol_Steps.png)
-
-Most of the [Initialization](LAA__Terminology_And_Definitions.md#Initialization) [Step](LAA__Terminology_And_Definitions.md#Step) is out of the scope of this document.
-
-During the [Handshake](LAA__Terminology_And_Definitions.md#Handshake) [Step](LAA__Terminology_And_Definitions.md#Step), the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) performs a protocol negotiation with the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM), by sending its capabilities, the session identifier, and a list of manageable [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement). A [Protocol Binding](LAA__Terminology_And_Definitions.md#ProtocolBinding) to be used for the next step is then selected.
-
-Next, the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) starts a [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step) by sending a *Start* [Command](LAA__Terminology_And_Definitions.md#Command). During the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange), the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) may send *APDUs* to the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement), or send notifications to the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication). The end of the [Management Session](LAA__Terminology_And_Definitions.md#ManagementSession) is announced by a *Stop* [Command](LAA__Terminology_And_Definitions.md#Command) form the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM).
 
 Protocol details
 ----------------------
@@ -126,9 +106,9 @@ The following type of [Messages](LAA__Terminology_And_Definitions.md#Message) ma
 
 | Protocol Step    | Messages               | From         | To           |
 |------------------|------------------------|--------------|--------------|
-| Handshake        | **Handshake Command**  | Local Applet Assistant  | SAM SM |
-| Handshake        | **Handshake Response** | SAM SM | Local Applet Assistant  |
-| Command Exchange | **Order**              | SAM SM | Local Applet Assistant  |
+| /initiateInstallation        | **Handshake Command**  | Local Applet Assistant  | SAM SM |
+| /initiateInstallation        | **Handshake Response** | SAM SM | Local Applet Assistant  |
+| /notification | **Order**              | SAM SM | Local Applet Assistant  |
 | Command Exchange | **Report**             | Local Applet Assistant  | SAM SM |
 
 Local Applet Assistant Behaviour
