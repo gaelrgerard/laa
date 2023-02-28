@@ -18,7 +18,7 @@ Protocol design
 
 ### Protocol Layers
 
-LAA is a message-oriented protocol which used the following protocol stack:
+LAA protocol is a message-oriented protocol which used the following protocol stack:
 
 ![Protocol layers](images/LAA__Protocol_layers.png)
 
@@ -102,7 +102,7 @@ The following sequence diagram resumes the main exchanges during a [Management S
 Messages
 ========
 
-The following type of [Messages](LAA__Terminology_And_Definitions.md#Message) may be exchanged between [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) and [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM):
+The following type of [Messages](LAA__Terminology_And_Definitions.md#Message) are exchanged between [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) and [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM):
 
 | Protocol Step    | Messages               | From         | To           |
 |------------------|------------------------|--------------|--------------|
@@ -114,7 +114,7 @@ The following type of [Messages](LAA__Terminology_And_Definitions.md#Message) ma
 Local Applet Assistant Behaviour
 =====================
 
-Upon end user request, the Local Applet Assistant initiates the installation by sending  to the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) a SAM Eligibility command.
+Upon end user request, the Local Applet Assistant initiates the installation by sending  to the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) a SAM install  [Message](LAA__Terminology_And_Definitions.md#Message).
 
 On reception of the *Handshake Response* [Message](LAA__Terminology_And_Definitions.md#Message) from the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM), the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) goes to the next [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step) using the selected [Protocol Binding](LAA__Terminology_And_Definitions.md#ProtocolBinding). During this [Step](LAA__Terminology_And_Definitions.md#Step), the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) proceeds the [Command](LAA__Terminology_And_Definitions.md#Command) from *Order* [Messages](LAA__Terminology_And_Definitions.md#Message) one-by-one and, if required, it appends the associated [Response](LAA__Terminology_And_Definitions.md#Response) into *Report* [Messages](LAA__Terminology_And_Definitions.md#Message). As the first [Command](LAA__Terminology_And_Definitions.md#Command) shall be a *Start* and the last one a *Stop*, the internal state machine of the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) is detailed in the next figure:
 

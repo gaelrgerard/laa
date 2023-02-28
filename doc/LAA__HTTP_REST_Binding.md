@@ -26,30 +26,14 @@ Implementors MAY uses another HTTP mechanism to reinforce the HTTP session (e.g.
 HTTP REST Endpoints
 -------------------
 
-Two endpoints are defined: 
+3 endpoints are defined: 
 
 | **Endpoint**      | **Description**        |
 |-------------------|------------------------|
 | /initiateInstallation        | Trigger a SAM Service installation         |
+| /delete        | Trigger a SAM Service deletion         |
 | /notification | Notify a SAM Service management event |
 
-Handshake Step
---------------
-
-The *Handshake Command* [Message](LAA__Terminology_And_Definitions.md#Message) SHALL be mapped to a HTTP POST request and the associated *Handshake Response* [Message](LAA__Terminology_And_Definitions.md#Message) to the associated HTTP Response.
-
-![HTTP messages](images/GP_SERAM__HTTP_Handshake.png)
-
-JSON schema for the HTTP request and response during [Handshake](LAA__Terminology_And_Definitions.md#Handshake) [Step](LAA__Terminology_And_Definitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/laa.yaml).
-
-Command Exchange Step
----------------------
-
-The *Order* [Message](LAA__Terminology_And_Definitions.md#Message) SHALL be mapped to an HTTP response  and the associated *Report* [Message](LAA__Terminology_And_Definitions.md#Message) to the next HTTP Request.
-
-![HTTP messages](images/GP_SERAM__HTTP_Command_Exchange.png)
-
-The JSON schema for the HTTP request and response during [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step) SHALL fullfill the [GP SERAM OpenAPI specification](/spec/laa.yaml).
 
 
 

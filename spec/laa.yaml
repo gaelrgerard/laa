@@ -26,7 +26,7 @@ paths:
       tags:
       - "samApplicationManagementService"
       summary: "This function initiates the SAM-SM installation procedure"
-      description: "This method shall be used by the LAA client to request to open session on SAM SM. LAA retrieves material from the SAM SD to be provided to the SAM-SM. On reception of this function call, the SAM-SM SHALL: 
+      description: "This method is used by the LAA client to request to open session on SAM SM. LAA retrieves material from the SAM SD to be provided to the SAM-SM. On reception of this function call, the SAM-SM SHALL: 
       
       
           •  Check if the installation on the current SAM SD is possible (contactless support, memory left..)
@@ -65,12 +65,14 @@ paths:
                 properties:
                   samInstallResponse:
                     $ref: "#/components/schemas/samManagementResponse"
+        "409":
+          description: "Conflict with already existing session"
   /delete:
     post:
       tags:
       - "samApplicationManagementService"
       summary: "This function initiates the SAM-SM delete procedure"
-      description: "This method shall be used by the LAA client to request the deletion of specific SAM Service identified by its asp AID"
+      description: "This method is used by the LAA client to request the deletion of specific SAM Service identified by its asp AID"
       parameters:
         - name: sessionID
           in: query
@@ -82,10 +84,10 @@ paths:
           application/json:
             schema:
               required:
-              - "aspSdAid"
+              - "samServiceIdentifier"
               properties:
-                aspSdAid:
-                  $ref: "#/components/schemas/aid"
+                samServiceIdentifier:
+                  $ref: "#/components/schemas/samServiceIdentifier"
       responses:
         "200":
           description: "OK"
@@ -97,12 +99,14 @@ paths:
                 properties:
                   samDeleteResponse:
                     $ref: "#/components/schemas/samManagementResponse"
+        "409":
+          description: "Conflict with already existing session"
   /notification:
     post:
       tags:
       - "samApplicationManagementService"
-      summary: "method used to notifiy the SAM SM"
-      description: "This function SHALL be called by the LAA to notify the SAM-SM that a SAM Application Management Operation has successfully been performed on the SAM SD."
+      summary: "method used to notify the SAM SM of a SAM SD event"
+      description: "This function is called by the LAA to notify the SAM-SM that a SAM Application Management Operation has successfully been performed on the SAM SD."
       parameters:
         - name: sessionID
           in: query
@@ -191,10 +195,10 @@ components:
       type: "object"
       required:
         - "samEligibilityData"
-        - "aspSdAid"
+        - "samServiceIdentifier"
       properties:
-        aspSdAid:
-          $ref: "#/components/schemas/aid"
+        samServiceIdentifier:
+          $ref: "#/components/schemas/samServiceIdentifier"
         samEligibilityData:
           $ref: "#/components/schemas/samEligibilityData"
     
@@ -222,7 +226,13 @@ components:
           items:
             $ref: "#/components/schemas/samCertificate"  
   
-  
+    samServiceIdentifier:
+     properties:
+                aspSdAid:
+                  $ref: "#/components/schemas/aid"
+                extraData:
+                  type: string
+                
 
     samManagementResponse:
       description: "This is the data model for the sam install or delete Response."
