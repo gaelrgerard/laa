@@ -1,3 +1,4 @@
+
 openapi: "3.0.3"
 info:
   title: "LAA - SAM SM"
@@ -64,7 +65,7 @@ paths:
                 - "samInstallResponse"
                 properties:
                   samInstallResponse:
-                    $ref: "#/components/schemas/samManagementResponse"
+                    $ref: "#/components/schemas/samManagementRespMsg"
         "409":
           description: "Conflict with already existing session"
   /delete:
@@ -84,10 +85,10 @@ paths:
           application/json:
             schema:
               required:
-              - "samServiceIdentifier"
+              - "samDeleteMsg"
               properties:
-                samServiceIdentifier:
-                  $ref: "#/components/schemas/samServiceIdentifier"
+                samDeleteMsg:
+                  $ref: "#/components/schemas/samDeleteMsg"
       responses:
         "200":
           description: "OK"
@@ -98,7 +99,7 @@ paths:
                 - "samDeleteResponse"
                 properties:
                   samDeleteResponse:
-                    $ref: "#/components/schemas/samManagementResponse"
+                    $ref: "#/components/schemas/samManagementRespMsg"
         "409":
           description: "Conflict with already existing session"
   /notification:
@@ -118,12 +119,10 @@ paths:
           application/json:
             schema:
               required:
-              - "installationStep"
+              - "notificationMsg"
               properties:
-                installationStep:
-                  $ref: "#/components/schemas/installationStep"
-                aspSdAid:
-                  $ref: "#/components/schemas/aid"
+                notificationMsg:
+                  $ref: "#/components/schemas/notificationMsg"
       responses:
         "200":
           description: "OK"
@@ -190,17 +189,6 @@ components:
           enum:
             - "x509"
             - "GP"
-    samInstallMsg:
-      description: "this msg alow to trigger an install on a SAM SD"
-      type: "object"
-      required:
-        - "samEligibilityData"
-        - "samServiceIdentifier"
-      properties:
-        samServiceIdentifier:
-          $ref: "#/components/schemas/samServiceIdentifier"
-        samEligibilityData:
-          $ref: "#/components/schemas/samEligibilityData"
     
     samEligibilityData:
       description: "this command alow to perform an eligibility check"
@@ -227,17 +215,92 @@ components:
             $ref: "#/components/schemas/samCertificate"  
   
     samServiceIdentifier:
+     required:
+        - "aspSdAid"
      properties:
-                aspSdAid:
-                  $ref: "#/components/schemas/aid"
-                extraData:
-                  type: string
+        aspSdAid:
+          $ref: "#/components/schemas/aid"
+        extraData:
+          type: string
                 
-
-    samManagementResponse:
+    functionExecutionStatus:
+      required:
+        - "status"
+      properties:
+         status: 
+          type: "string"
+          enum:
+                - "EXECUTED_SUCCESS"
+                - "EXECUTED_WARNING"
+                - "FAILED"
+                - "EXPIRED"
+                - "RAM_SESSION_CREATED" 
+         statusCodeData:
+          $ref: "#/components/schemas/statusCodeData"
+    statusCodeData:
+      description : 
+       "status code data like GSMA RSP"
+      required:
+        - "subjectCode"
+        - "reasonCode"
+      properties:
+        subjectCode:
+          type: string
+          description: OID of the subject code
+        reasonCode:
+          type: string
+          description: OID of the reason code
+        subjectIdentifier:
+          type: string
+          description: Identifier of the subject
+        message:
+          type: string
+          description: Textual and human readable explanation
+    
+    samInstallMsg:
+      description: "this msg alow to trigger an install on a SAM SD"
+      type: "object"
+      required:
+        - "samEligibilityData"
+        - "samServiceIdentifier"
+      properties:
+        samServiceIdentifier:
+          $ref: "#/components/schemas/samServiceIdentifier"
+        samEligibilityData:
+          $ref: "#/components/schemas/samEligibilityData"
+    
+    samDeleteMsg:
+      description: "this msg alow to trigger an delete on a SAM SD"
+      type: "object"
+      required:
+        - "samServiceIdentifier"
+      properties:
+        samServiceIdentifier:
+          $ref: "#/components/schemas/samServiceIdentifier"
+     
+    notificationMsg:
+      description: "This is the data model for the notification msg"
+      type: "object"
+      required:
+        - "functionExecutionStatus"
+        - "installationStep"
+        - "samServiceIdentifier"
+      properties:
+        functionExecutionStatus:
+          $ref: "#/components/schemas/functionExecutionStatus"
+        installationStep:
+          $ref: "#/components/schemas/installationStep"
+        samServiceIdentifier:
+          $ref: "#/components/schemas/samServiceIdentifier"
+    
+    samManagementRespMsg:
       description: "This is the data model for the sam install or delete Response."
       type: "object"
+      required:
+        - "functionExecutionStatus"
       properties:
+        functionExecutionStatus:
+          $ref: "#/components/schemas/functionExecutionStatus"
         gpseramuri:
           type: string
           format: uri

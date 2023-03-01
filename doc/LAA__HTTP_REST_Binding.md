@@ -30,7 +30,7 @@ HTTP REST Endpoints
 
 | **Endpoint**      | **Description**        |
 |-------------------|------------------------|
-| /initiateInstallation        | Trigger a SAM Service installation         |
+| /install        | Trigger a SAM Service installation         |
 | /delete        | Trigger a SAM Service deletion         |
 | /notification | Notify a SAM Service management event |
 

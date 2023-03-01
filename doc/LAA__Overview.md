@@ -7,8 +7,7 @@ The following figure presents the SAM architecture and its environment. All word
 
 ![Architecture Overview](images/LAA__SAM_Architecture_Overview.png)
 
-This documentation is focusing on the SAM04 interface.
-[GPSERAM](LAA__References.md#GPSERAM) is also used on this SAM04 interface.
+This documentation is focusing on the SAM04 interface. [GPSERAM](LAA__References.md#GPSERAM) is also used on this SAM04 interface.
 [SAM Configuration](LAA__References.md#SAMCONF) is focusing more on the [SAM SD](LAA__Terminology_And_Definitions.md#SAMSD) part.
 A [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and a [LAA](LAA__Terminology_And_Definitions.md#LAA) manage this protocol to allow the [LAA](LAA__Terminology_And_Definitions.md#LAA) to trigger a [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement).
 
@@ -50,39 +49,7 @@ Same [sessionId](LAA__Terminology_And_Definitions.md#sessionId) shall be used fo
 Protocol details
 ----------------------
 
-### Initialization Step
-
-During this phase, a session identifier, named [sessionId](LAA__Terminology_And_Definitions.md#sessionId), SHALL be generated and shared between the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM). How this [sessionId](LAA__Terminology_And_Definitions.md#sessionId) is generated and shared is out of the scope of this specification.
-
-The [sessionId](LAA__Terminology_And_Definitions.md#sessionId) SHALL be a unique identifier for the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication) and the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM). How this uniqueness is handled is out of the scope of this specification.
-
-Moreover, the [RA Endpoint](LAA__Terminology_And_Definitions.md#RAEndpoint) to communicate with the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) MUST also has been shared between entities. How this [RA Endpoint](LAA__Terminology_And_Definitions.md#RAEndpoint) is defined and shared is out of the scope of this specification.
-
-LAA session starts after the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) is triggered with the [sessionId](LAA__Terminology_And_Definitions.md#sessionId) and the [RA Endpoint](LAA__Terminology_And_Definitions.md#RAEndpoint) of the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM). The [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) starts with the [Handshake](LAA__Terminology_And_Definitions.md#Handshake) [Step](LAA__Terminology_And_Definitions.md#Step).
-
-### Handshake Step
-
-As soon as it was triggered, the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) shall start the [Handshake](LAA__Terminology_And_Definitions.md#Handshake) [Step](LAA__Terminology_And_Definitions.md#Step).
-
-Handshaking allows a [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) and [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) to negotiate the [Data Format](LAA__Terminology_And_Definitions.md#DataFormat) and the [Transport](LAA__Terminology_And_Definitions.md#Transport) protocol used to perform the remote management.
-
-This method shall be used by the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) to tell which [Data Format](LAA__Terminology_And_Definitions.md#DataFormat) and which [Transport](LAA__Terminology_And_Definitions.md#Transport) protocols it supports. In response, the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) shall tell which ones it selects.
-
-The attributes which are negotiated are:
-
--   The secure elements: the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) provides a list of [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement) which may be targeted by the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM)
-
--   The [Data Format](LAA__Terminology_And_Definitions.md#DataFormat) (e.g. JSON)
-
--   The [Transport](LAA__Terminology_And_Definitions.md#Transport) protocols (e.g. HTTPS)
-
--   The version of the protocol
-
-To allow the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) to track the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) provides a [sessionId](LAA__Terminology_And_Definitions.md#sessionId) that shall be reused in all subsequent exchanges as defined by the selected [Protocol Binding](LAA__Terminology_And_Definitions.md#ProtocolBinding).
-
-The [Handshake](LAA__Terminology_And_Definitions.md#Handshake) [Step](LAA__Terminology_And_Definitions.md#Step) shall be performed using the *HTTP REST* [Protocol Binding](LAA__Terminology_And_Definitions.md#ProtocolBinding).
-
-### Command Exchange Step
+### Installation
 
 During the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step), the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) performs a series of actions by sending [Commands](LAA__Terminology_And_Definitions.md#Command) to the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA). The [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) processed each [Command](LAA__Terminology_And_Definitions.md#Command) and if required send a [Response](LAA__Terminology_And_Definitions.md#Response) to the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM).
 
@@ -92,12 +59,6 @@ During the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchang
 
 As shown by the diagram, the first and last [Command](LAA__Terminology_And_Definitions.md#Command) of the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step) is respectively the *Start* [Command](LAA__Terminology_And_Definitions.md#Command) and *Stop* [Command](LAA__Terminology_And_Definitions.md#Command). Other *RAM* [Commands](LAA__Terminology_And_Definitions.md#Command) are used to send *APDUs* to the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement), or *Notifications* to the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication). Only the *Start* and *Stop* [Commands](LAA__Terminology_And_Definitions.md#Command) are mandatory.
 
-Protocol overview diagram
--------------------------
-
-The following sequence diagram resumes the main exchanges during a [Management Session](LAA__Terminology_And_Definitions.md#ManagementSession). In the diagram the exchanges during the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step) are illustrated with the two types of *RAM* [Command](LAA__Terminology_And_Definitions.md#Command) that can be sent by a [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) after the *Start* [Command](LAA__Terminology_And_Definitions.md#Command) and until the *Stop* [Command](LAA__Terminology_And_Definitions.md#Command).
-
-![Protocol overview](images/GP_SERAM__Protocol_overview.png)
 
 Messages
 ========
@@ -106,10 +67,11 @@ The following type of [Messages](LAA__Terminology_And_Definitions.md#Message) ar
 
 | Protocol Step    | Messages               | From         | To           |
 |------------------|------------------------|--------------|--------------|
-| /initiateInstallation        | **Handshake Command**  | Local Applet Assistant  | SAM SM |
-| /initiateInstallation        | **Handshake Response** | SAM SM | Local Applet Assistant  |
-| /notification | **Order**              | SAM SM | Local Applet Assistant  |
-| Command Exchange | **Report**             | Local Applet Assistant  | SAM SM |
+| /install        | **samInstallMsg**  | Local Applet Assistant  | SAM SM |
+| /install        | **samManagementRespMsg** | SAM SM | Local Applet Assistant  |
+| /delete        | **samDeleteMsg**  | Local Applet Assistant  | SAM SM |
+| /delete        | **samManagementRespMsg** | SAM SM | Local Applet Assistant  |
+| /notification | **notificationMsg**              | SAM SM | Local Applet Assistant  |
 
 Local Applet Assistant Behaviour
 =====================
