@@ -1,5 +1,6 @@
-@startuml
 
+@startuml
+ 
 hide footbox
 skinparam sequenceMessageAlign center
 skinparam sequenceArrowFontSize 11
@@ -7,18 +8,21 @@ skinparam noteFontSize 11
 skinparam monochrome true
 skinparam lifelinestrategy solid
  
-"End User" -> "Device Application" : deleteDeviceApplication
-"Device Application" -> LAA : delete(sessionId, samSMFQDN, name)
+"End User" -> "LAA" : deleteSAMService(name,aspSDAid)
 
+ 
 LAA -> "End User" : requestUserConsentOrAuthentification
 rnote over "End User": allow
 LAA <-- "End User"
- 
-"LAA" -> "SAM SD" : DELETE_SAM_SERVICE(aspSDAid) 
+
+LAA -> "ASP SD" : GET_DATA(SAMServiceInfoTag)
+"ASP SD" --> LAA : SAMServiceInfo(SAMSM_FQDN)  
+
+"LAA" -> "SAM SD" : DELETE_SAM_SERVICES(aspSDAid) 
 "SAM SD" --> LAA : deleteStatusWord
 
  
-LAA --> "Device Application" : notification(sessionId, aspSDAid, DELETE)
+LAA --> "Device application" : notification(sessionId, aspSDAid, DELETE)
  
 LAA --> "SAM SM" : notification(SAMSM_FQDN, sessionId, aspSDAid, DELETE)
 @enduml

@@ -48,6 +48,7 @@ Same [sessionId](LAA__Terminology_And_Definitions.md#sessionId) shall be used fo
 
 Protocol details
 ----------------------
+In the following sequence diagrams, the process executeGPSERAMScript is defined in [GPSERAM](LAA__References.md#GPSERAM) 
 
 ### Installation
 
@@ -59,8 +60,6 @@ The [LAA](LAA__Terminology_And_Definitions.md#LAA)  shall be able to process [GP
 
 In this mode, the Device Application sends a null parameter as localScriptUri, and the initiateInstallation response contains the gpseramUri (for instance [https://sam-sm.server1.com/gp/seram/script1](https://sam-sm.server1.com/gp/seram/script1)).
 
-The process executeGPSERAMScript is defined in [GPSERAM](LAA__References.md#GPSERAM)
-
 Optionally at the end of this process, the SAM SM may execute a GET STATUS command for a given ASP SD AID.
 
 #### Local script
@@ -71,11 +70,19 @@ In this mode, initiateInstallation is not sent to the SAM SM and [LAA](LAA__Term
 
 
 ### Personalization
+
+This section describes how an SAM applet may be personalized by SAM SM. Notice that a SAM applet may be personalized through other means that are out of the scope of this specification.
+
 ![install-local-script](doc/uml/perso.svg)
+The same sessionId shall be used for the installation step and the personalization step.
 
 ### Deletion
 
+#### Trigerred by LAA
+![install-local-script](doc/uml/delete-laa.svg)
 
+#### Trigerred by device application removal
+![install-local-script](doc/uml/delete-device-app.svg)
 Messages
 ========
 
