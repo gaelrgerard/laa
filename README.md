@@ -25,7 +25,7 @@ Protocol binding
 
 For **LAA - HTTP REST Binding** please refer to:
 
-* [HTTP REST Binding - OpenAPI specification](spec/gpseram.yaml) ([Viewer](https://slegouix.github.io/SERAM/))
+* [HTTP REST Binding - OpenAPI specification](spec/gpseram.yaml) ([Viewer](https://gaelrgerard.github.io/laa/))
 * [HTTP REST Binding - explanation](doc/LAA__HTTP_REST_Binding.md)
 
 Tools

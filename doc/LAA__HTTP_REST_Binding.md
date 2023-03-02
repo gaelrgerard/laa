@@ -25,6 +25,7 @@ Implementors MAY uses another HTTP mechanism to reinforce the HTTP session (e.g.
 
 HTTP REST Endpoints
 -------------------
+The endpoints are defined through uris. All endpoints are prefixed with a [SAM SM base uri](LAA__Terminology_And_Definitions.md#SAMSMUri).
 
 3 endpoints are defined: 
 

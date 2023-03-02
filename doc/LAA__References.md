@@ -30,4 +30,6 @@ Informative References
 | Standard / Specification                                                              | Description                                                                                            |
 | [GPC_SPE](https://globalplatform.org/specs-library/card-specification-v2-3-1/)        | GlobalPlatform – Card Specification V2.3.1                                                             |
 | [OMAPI](https://globalplatform.org/specs-library/open-mobile-api-specification-v3-3/) | GlobalPlatform – Open Mobile API Specification version 3.3                                             | and Streaming in Bidirectional HTTP |
+| [SGP22](https://www.gsma.com/esim/wp-content/uploads/2022/10/SGP.22-v3.0-1.pdf) | RSP Technical Specification v3.0  
+
 
