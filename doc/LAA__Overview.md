@@ -144,16 +144,16 @@ Reason Code value are defined in this table below :
 |3.11| Value has Changed (as defined in [SGP22](LAA__References.md#SGP22))|
 |3.12| Invalid Match (as defined in [SGP22](LAA__References.md#SGP22))|
 |4| Processing Error (as defined in [SGP22](LAA__References.md#SGP22))|
-|	4.2| Execution Error (as defined in [SGP22](LAA__References.md#SGP22))|
-	|4.3| Stopped on Warning (as defined in [SGP22](LAA__References.md#SGP22))|
-	|4.8| Insufficient Memory (as defined in [SGP22](LAA__References.md#SGP22))|
-	|4.10| Time to Live Expired (as defined in [SGP22](LAA__References.md#SGP22))|
+|4.2| Execution Error (as defined in [SGP22](LAA__References.md#SGP22))|
+|4.3| Stopped on Warning (as defined in [SGP22](LAA__References.md#SGP22))|
+|4.8| Insufficient Memory (as defined in [SGP22](LAA__References.md#SGP22))|
+|4.10| Time to Live Expired (as defined in [SGP22](LAA__References.md#SGP22))|
 |5| Transport Error (as defined in [SGP22](LAA__References.md#SGP22))|
-	|5.1| Inaccessible (as defined in [SGP22](LAA__References.md#SGP22))|
+|5.1| Inaccessible (as defined in [SGP22](LAA__References.md#SGP22))|
 |6| Security Error (as defined in [SGP22](LAA__References.md#SGP22))|
 |6.1| Verification Failed (as defined in [SGP22](LAA__References.md#SGP22))|
-	|6.3| Expired (as defined in [SGP22](LAA__References.md#SGP22))|
-	|6.4| Maximum number of attempts exceeded (as defined in [SGP22](LAA__References.md#SGP22))|
+|6.3| Expired (as defined in [SGP22](LAA__References.md#SGP22))|
+|6.4| Maximum number of attempts exceeded (as defined in [SGP22](LAA__References.md#SGP22))|
 
 
 
