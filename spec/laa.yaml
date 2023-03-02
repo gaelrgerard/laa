@@ -34,7 +34,7 @@ paths:
           •  Check if the installation on the current SAM SD is possible (contactless support, memory left..)
           
           
-          •  Create a SAM management session with the given identifier
+          •  Create a SAM management session with the given identifier.
           
           
           •  Generate a script for the SAM service installation (including the ASP SD). This script can be generated dynamically (for instance in SCP11a) or can be only retrieved (for instance SCP11c) for this given SAM SD target. The sessionId for GP SE RAM session SHALL be reused.
@@ -58,7 +58,7 @@ paths:
                   $ref: "#/components/schemas/samInstallMsg"
       responses:
         "200":
-          description: "OK"
+          description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED"
           content:
             application/json:
               schema:
@@ -94,7 +94,7 @@ paths:
                   $ref: "#/components/schemas/samDeleteMsg"
       responses:
         "200":
-          description: "OK"
+          description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED"
           content:
             application/json:
               schema:
@@ -138,9 +138,10 @@ paths:
 components:
   schemas:
     binData:
-      description: "base 64 encoded asn1 data"
+      description: "base 64 encoded bin data"
       type: "string"
       format: "byte"
+      example: "dGhpcyBpcyBhbiBleGFtcGxl"
 
     secureElement:
       type: "object"
@@ -198,7 +199,7 @@ components:
             - "GP"
     
     samEligibilityData:
-      description: "this command alow to perform an eligibility check"
+      description: "this command alow to perform an eligibility check. samSDEligibilityData is the concatenation of the GET DATA responses performed on the SAM SD : CCI, CRD, SAMInfo"
       type: "object"
       required:
         - "secureElement"
@@ -217,7 +218,7 @@ components:
           $ref: "#/components/schemas/deviceInfo"
         samCertificates:
           type: "array"
-          description: "sam certificate shall be ordered from the SAM SD certiicate (first in the list) to the SAM CA (last in the list)"
+          description: "sam certificate shall be ordered from the SAM SD certificate (first in the list) to the SAM CA (last in the list)"
           items:
             $ref: "#/components/schemas/samCertificate"  
   
@@ -255,15 +256,18 @@ components:
         subjectCode:
           type: string
           description: OID of the subject code
+          example: 1.0
         reasonCode:
           type: string
           description: OID of the reason code
+          example: 1.0
         subjectIdentifier:
           type: string
           description: Identifier of the subject
         message:
           type: string
           description: Textual and human readable explanation
+          example: "SAM SD capabilities is not compliant with SAM Service"
     
     samInstallMsg:
       description: "this msg alow to trigger an install on a SAM SD"

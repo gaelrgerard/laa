@@ -1,4 +1,4 @@
-LAA SERAM - References
+LAA SAM SM - References
 =====================
 
 The tables below list references applicable to this specification. The latest version of each reference applies unless a publication date or version is explicitly stated.
