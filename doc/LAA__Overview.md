@@ -128,30 +128,30 @@ Reason Code value are defined in this table below :
 | **Reason Code**      | **Description**        | 
 |-------------------|------------------------| 
 |1| Access Error (as defined in [SGP22](LAA__References.md#SGP22))|
-|1.1| Unknown (Identification or Authentication) (as defined in [SGP22](LAA__References.md#SGP22))
-|1.2| Not Allowed (Authorisation) (as defined in [SGP22](LAA__References.md#SGP22))
-|2| Format Error (as defined in [SGP22](LAA__References.md#SGP22))
-|2.1| Invalid (as defined in [SGP22](LAA__References.md#SGP22))
-|2.2| Mandatory Element Missing (as defined in [SGP22](LAA__References.md#SGP22))
-|2.3| Conditional Element Missing (as defined in [SGP22](LAA__References.md#SGP22))
-|3| Conditions of Use Not Satisfied (as defined in [SGP22](LAA__References.md#SGP22))
-|3.1| Unsupported (as defined in [SGP22](LAA__References.md#SGP22))
-|3.3| Already in Use (Uniqueness) (as defined in [SGP22](LAA__References.md#SGP22))
-|3.7| Unavailable (as defined in [SGP22](LAA__References.md#SGP22))
-|3.8| Refused (as defined in [SGP22](LAA__References.md#SGP22))
-|3.9| Unknown (as defined in [SGP22](LAA__References.md#SGP22))
+|1.1| Unknown (Identification or Authentication) (as defined in [SGP22](LAA__References.md#SGP22))|
+|1.2| Not Allowed (Authorisation) (as defined in [SGP22](LAA__References.md#SGP22))|
+|2| Format Error (as defined in [SGP22](LAA__References.md#SGP22))|
+|2.1| Invalid (as defined in [SGP22](LAA__References.md#SGP22))|
+|2.2| Mandatory Element Missing (as defined in [SGP22](LAA__References.md#SGP22))|
+|2.3| Conditional Element Missing (as defined in [SGP22](LAA__References.md#SGP22))|
+|3| Conditions of Use Not Satisfied (as defined in [SGP22](LAA__References.md#SGP22))|
+|3.1| Unsupported (as defined in [SGP22](LAA__References.md#SGP22))|
+|3.3| Already in Use (Uniqueness) (as defined in [SGP22](LAA__References.md#SGP22))|
+|3.7| Unavailable (as defined in [SGP22](LAA__References.md#SGP22))|
+|3.8| Refused (as defined in [SGP22](LAA__References.md#SGP22))|
+|3.9| Unknown (as defined in [SGP22](LAA__References.md#SGP22))|
 |3.10| Invalid Association (as defined in [SGP22](LAA__References.md#SGP22))|
 |3.11| Value has Changed (as defined in [SGP22](LAA__References.md#SGP22))|
 |3.12| Invalid Match (as defined in [SGP22](LAA__References.md#SGP22))|
-|4| Processing Error (as defined in [SGP22](LAA__References.md#SGP22))
-|	4.2| Execution Error (as defined in [SGP22](LAA__References.md#SGP22))
-	|4.3| Stopped on Warning (as defined in [SGP22](LAA__References.md#SGP22))
-	|4.8| Insufficient Memory (as defined in [SGP22](LAA__References.md#SGP22))
+|4| Processing Error (as defined in [SGP22](LAA__References.md#SGP22))|
+|	4.2| Execution Error (as defined in [SGP22](LAA__References.md#SGP22))|
+	|4.3| Stopped on Warning (as defined in [SGP22](LAA__References.md#SGP22))|
+	|4.8| Insufficient Memory (as defined in [SGP22](LAA__References.md#SGP22))|
 	|4.10| Time to Live Expired (as defined in [SGP22](LAA__References.md#SGP22))|
-|5| Transport Error (as defined in [SGP22](LAA__References.md#SGP22))
-	|5.1| Inaccessible (as defined in [SGP22](LAA__References.md#SGP22))
-|6| Security Error (as defined in [SGP22](LAA__References.md#SGP22))
-|6.1| Verification Failed (as defined in [SGP22](LAA__References.md#SGP22))
+|5| Transport Error (as defined in [SGP22](LAA__References.md#SGP22))|
+	|5.1| Inaccessible (as defined in [SGP22](LAA__References.md#SGP22))|
+|6| Security Error (as defined in [SGP22](LAA__References.md#SGP22))|
+|6.1| Verification Failed (as defined in [SGP22](LAA__References.md#SGP22))|
 	|6.3| Expired (as defined in [SGP22](LAA__References.md#SGP22))|
 	|6.4| Maximum number of attempts exceeded (as defined in [SGP22](LAA__References.md#SGP22))|
 
