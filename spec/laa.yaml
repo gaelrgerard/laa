@@ -8,8 +8,8 @@ info:
     name: MIT
     url: 'https://opensource.org/licenses/MIT'
 tags:
-- name: "samApplicationManagementService"
-  description: "This service allows to receive request from LAA"
+- name: "samSmService"
+  description: "This service allows to receive requests and notifications from LAA"
 servers:
   - url: '{protocol}://{samfqdn}/gp/sam'
     variables:
@@ -26,7 +26,7 @@ paths:
   /install:
     post:
       tags:
-      - "samApplicationManagementService"
+      - "samSmService"
       summary: "This function initiates the SAM-SM installation procedure"
       description: "This method is used by the LAA client to request to open session on SAM SM. LAA retrieves material from the SAM SD to be provided to the SAM-SM. On reception of this function call, the SAM-SM SHALL: 
       
@@ -74,7 +74,7 @@ paths:
   /delete:
     post:
       tags:
-      - "samApplicationManagementService"
+      - "samSmService"
       summary: "This function initiates the SAM-SM delete procedure"
       description: "This method is used by the LAA client to request the deletion of specific SAM Service identified by its asp AID"
       parameters:
@@ -110,7 +110,7 @@ paths:
   /notification:
     post:
       tags:
-      - "samApplicationManagementService"
+      - "samSmService"
       summary: "This function notifies the SAM SM of a SAM SD event"
       description: "This function is called by the LAA to notify the SAM-SM that a SAM Application Management Operation has successfully been performed on the SAM SD."
       parameters:
