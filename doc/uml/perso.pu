@@ -1,0 +1,23 @@
+@startuml
+ 
+hide footbox
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowFontSize 11
+skinparam noteFontSize 11
+skinparam monochrome true
+skinparam lifelinestrategy solid
+ 
+"Device Application" -> ASP : provideInfoForRegistration(sessionId, endUserInfo)
+ASP -> "SAM SM" : perso(sessionId, endUserPersoInfo)
+"SAM SM" -> "SAM SM" : buildPersoSAMScript(sessionId, endUserPersoInfo)
+"SAM SM" --> "ASP" : persoScriptSuccessfullyBuild
+"ASP" --> "Device Application" : registrationComplete
+"Device Application" -> LAA : continueGPSERAMSession(sessionId)
+rnote over "LAA", "SAM SM"
+     Process executeGPSERAMScript(sessionId, persoUri)
+end rnote
+ 
+ 
+LAA --> "Device Application" : notification(sessionId, aspSDAid, PERSO)
+LAA --> "SAM SM" : notification(sessionId, aspSDAid, PERSO)
+@enduml

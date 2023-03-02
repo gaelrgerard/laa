@@ -15,7 +15,7 @@ rnote over "End User": allow
 LAA <-- "End User"
 
 rnote over "LAA", "SAM SM"
-     Process executeScript(deleteScriptUri)
+     Process executeScript(sessionId, deleteScriptUri)
 end rnote
 
 

@@ -53,9 +53,27 @@ Protocol details
 
 #### Online installation
 ![install-samsm-script](doc/uml/install-samsm.svg)
+The GET DATA command is defined in [SAM Configuration](LAA__References.md#SAMCONF)  section 8.4.
+
+The [LAA](LAA__Terminology_And_Definitions.md#LAA)  shall be able to process [GPSERAM](LAA__References.md#GPSERAM) data containing SCP11a or SCP11c APDUs.
+
+In this mode, the Device Application sends a null parameter as localScriptUri, and the initiateInstallation response contains the gpseramUri (for instance [https://sam-sm.server1.com/gp/seram/script1](https://sam-sm.server1.com/gp/seram/script1)).
+
+The process executeGPSERAMScript is defined in [GPSERAM](LAA__References.md#GPSERAM)
+
+Optionally at the end of this process, the SAM SM may execute a GET STATUS command for a given ASP SD AID.
 
 #### Local script
-![install-local-script](doc/uml/install-device-script.svg)
+![install-local-script](doc/uml/install-local.svg)
+The [LAA](LAA__Terminology_And_Definitions.md#LAA)  shall also be able to process a local script containing SCP11c APDUs. This script is processed through a URI. The localScriptUri can be provided by the Device Application for local execution (for instance [file://data/local/euicc/sam/script1](file://data/local/euicc/sam/script1)).
+
+In this mode, initiateInstallation is not sent to the SAM SM and [LAA](LAA__Terminology_And_Definitions.md#LAA)  performs a local eligibility check and installation. The Device Application relies only on the [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks. [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks are out of scope of this specification. samSMFQDN parameter is only used for the notification.
+
+
+### Personalization
+![install-local-script](doc/uml/perso.svg)
+
+### Deletion
 
 
 Messages
