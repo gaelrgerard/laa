@@ -1,4 +1,4 @@
-Local Applet Assistant (LAA)
+Local Applet Assistant (LAA) <-> SAM SM 
 ========
 
 Introduction
@@ -11,7 +11,7 @@ Through the [LAA](doc/LAA__Terminology_And_Definitions.md#LAA), the End User is 
 * Manage (delete, upgrade, etc.) SAM applications on the [SAM SD](doc/LAA__Terminology_And_Definitions.md#SAMSD).
 * Select End User’s authentication and authorization methods (e.g. biometry, etc.).
 
-The [LAA](doc/LAA__Terminology_And_Definitions.md#LAA) is responsible for installing SAM applications on the SAM SD. 
+The [LAA](doc/LAA__Terminology_And_Definitions.md#LAA) is responsible for installing SAM applications on the [SAM SD](doc/LAA__Terminology_And_Definitions.md#SAMSD). 
 
 To understand the protocol, please, refer to:
 
