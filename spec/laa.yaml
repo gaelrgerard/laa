@@ -17,6 +17,7 @@ servers:
         default: localhost
         description: sam server domain (or sam server domain + plus suffix) 
       protocol:
+        description: http shall be used only for testing purpose
         enum:
           - http
           - https
@@ -36,12 +37,12 @@ paths:
           •  Create a SAM management session with the given identifier
           
           
-          •  Generate a script for the SAM service installation (including the ASP SD). This script can be generated dynamically (for instance in SCP11a) or can be only retrieved (for instance SCP11c) for this given SAM SD target. The session id for GP SE RAM session SHALL be reused.
+          •  Generate a script for the SAM service installation (including the ASP SD). This script can be generated dynamically (for instance in SCP11a) or can be only retrieved (for instance SCP11c) for this given SAM SD target. The sessionId for GP SE RAM session SHALL be reused.
           
 
         The SAM-SM MAY perform additional operations, which are out of scope of this specification."
       parameters:
-        - name: sessionID
+        - name: sessionId
           in: query
           required: true
           schema:
@@ -68,6 +69,8 @@ paths:
                     $ref: "#/components/schemas/samManagementRespMsg"
         "409":
           description: "Conflict with already existing session"
+        "500":
+          description: "Unexpected error on server side"
   /delete:
     post:
       tags:
@@ -75,7 +78,7 @@ paths:
       summary: "This function initiates the SAM-SM delete procedure"
       description: "This method is used by the LAA client to request the deletion of specific SAM Service identified by its asp AID"
       parameters:
-        - name: sessionID
+        - name: sessionId
           in: query
           required: true
           schema:
@@ -102,14 +105,16 @@ paths:
                     $ref: "#/components/schemas/samManagementRespMsg"
         "409":
           description: "Conflict with already existing session"
+        "500":
+          description: "Unexpected error on server side"
   /notification:
     post:
       tags:
       - "samApplicationManagementService"
-      summary: "method used to notify the SAM SM of a SAM SD event"
+      summary: "This function notifies the SAM SM of a SAM SD event"
       description: "This function is called by the LAA to notify the SAM-SM that a SAM Application Management Operation has successfully been performed on the SAM SD."
       parameters:
-        - name: sessionID
+        - name: sessionId
           in: query
           required: true
           schema:
@@ -125,9 +130,11 @@ paths:
                   $ref: "#/components/schemas/notificationMsg"
       responses:
         "200":
-          description: "OK"
+          description: "notification process successfully"
         "404":
-          description: Session id not found
+          description: "Session id not found"
+        "500":
+          description: "Unexpected error on server side"
 components:
   schemas:
     binData:
@@ -222,6 +229,7 @@ components:
           $ref: "#/components/schemas/aid"
         extraData:
           type: string
+          example: "sam service instance 1"
                 
     functionExecutionStatus:
       required:
@@ -270,7 +278,7 @@ components:
           $ref: "#/components/schemas/samEligibilityData"
     
     samDeleteMsg:
-      description: "this msg alow to trigger an delete on a SAM SD"
+      description: "this msg alow to trigger a delete on a SAM SD"
       type: "object"
       required:
         - "samServiceIdentifier"
@@ -292,6 +300,8 @@ components:
           $ref: "#/components/schemas/installationStep"
         samServiceIdentifier:
           $ref: "#/components/schemas/samServiceIdentifier"
+        extraData:
+          type: "string"
     
     samManagementRespMsg:
       description: "This is the data model for the sam install or delete Response."
