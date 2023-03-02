@@ -51,13 +51,16 @@ Protocol details
 
 ### Installation
 
+#### Online installation
+
+#### Local script
+
 During the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step), the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) performs a series of actions by sending [Commands](LAA__Terminology_And_Definitions.md#Command) to the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA). The [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) processed each [Command](LAA__Terminology_And_Definitions.md#Command) and if required send a [Response](LAA__Terminology_And_Definitions.md#Response) to the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM).
 
 [Commands](LAA__Terminology_And_Definitions.md#Command) and [Responses](LAA__Terminology_And_Definitions.md#Response) are exchanged using, respectively, *Order* [Messages](LAA__Terminology_And_Definitions.md#Message) and *Report* [Messages](LAA__Terminology_And_Definitions.md#Message). An  *Order* [Message](LAA__Terminology_And_Definitions.md#Message) sent by the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) may carry one or more [Command](LAA__Terminology_And_Definitions.md#Command). Similary, a *Report* [Message](LAA__Terminology_And_Definitions.md#Message) from the [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) may carry one or more [Response](LAA__Terminology_And_Definitions.md#Response). [Messages](LAA__Terminology_And_Definitions.md#Message) which are exchanges during the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step) shall use the [Protocol Binding](LAA__Terminology_And_Definitions.md#ProtocolBinding) which has been selected during the [Handshake](LAA__Terminology_And_Definitions.md#Handshake) [Step](LAA__Terminology_And_Definitions.md#Step).
 
 ![SAM SM processing during Command Exchange](images/GP_SERAM__Remote_Agent_processing_during_Command_Exchange.png)
 
-As shown by the diagram, the first and last [Command](LAA__Terminology_And_Definitions.md#Command) of the [Command Exchange](LAA__Terminology_And_Definitions.md#CommandExchange) [Step](LAA__Terminology_And_Definitions.md#Step) is respectively the *Start* [Command](LAA__Terminology_And_Definitions.md#Command) and *Stop* [Command](LAA__Terminology_And_Definitions.md#Command). Other *RAM* [Commands](LAA__Terminology_And_Definitions.md#Command) are used to send *APDUs* to the [Secure Element](LAA__Terminology_And_Definitions.md#SecureElement), or *Notifications* to the [Device Application](LAA__Terminology_And_Definitions.md#DeviceApplication). Only the *Start* and *Stop* [Commands](LAA__Terminology_And_Definitions.md#Command) are mandatory.
 
 
 Messages
