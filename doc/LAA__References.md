@@ -9,7 +9,7 @@ Normative References
 |                                                   |                                                                           |
 |---------------------------------------------------|---------------------------------------------------------------------------|
 | Standard / Specification                          | Description                                                               |
-| [SAMREQ](https://www.gsma.com/newsroom/wp-content/uploads//SAM.01-v1.0.pdf))   | Secured Applications for Mobile - Requirements                  |
+| [SAMREQ](https://www.gsma.com/newsroom/wp-content/uploads//SAM.01-v1.0.pdf)   | Secured Applications for Mobile - Requirements                  |
 | [SAMCONF](https://globalplatform.org/specs-library/)   | SAM Configuration for Consumer Device                  |
 | [GPSERAM](https://github.com/GlobalPlatform/SERAM) | Globalplatform Secure Element remote access management  version 2.0 or higher                  |
 | [OpenAPI](https://spec.openapis.org/oas/v3.0.3)   | Open API Initiative – OpenAPI Specification version 3.0                   |

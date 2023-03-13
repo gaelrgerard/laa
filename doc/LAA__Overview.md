@@ -48,7 +48,7 @@ Same [sessionId](LAA__Terminology_And_Definitions.md#sessionId) SHALL be used fo
 
 Protocol details
 ----------------------
-In the following sequence diagrams, the process [1] executeGPSERAMScript is defined in [GPSERAM](LAA__References.md#GPSERAM). 
+In the following sequence diagrams, the process [1] executeGPSERAMScript is defined in [GPSERAM](LAA__References.md#GPSERAM) (Protocol Overview Diagram). 
 See also "End user interactions for user intent" section for process [0]
 
 ### Installation
@@ -65,6 +65,7 @@ Optionally at the end of this process, the [SAM SM](LAA__Terminology_And_Definit
 
 #### Local script
 ![install-local-script](uml/install-local.svg)
+
 The [LAA](LAA__Terminology_And_Definitions.md#LAA)  SHALL also be able to process a local script containing SCP11c APDUs. This script is processed through a uri. The localScriptUri can be provided by the Device Application for local execution (for instance [file://data/local/euicc/sam/script1](file://data/local/euicc/sam/script1)).
 
 In this mode, initiateInstallation is not sent to the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and [LAA](LAA__Terminology_And_Definitions.md#LAA)  performs a local eligibility check and installation. The Device Application relies only on the [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks. [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks are out of scope of this specification. samSMFQDN parameter is only used for the notification.
