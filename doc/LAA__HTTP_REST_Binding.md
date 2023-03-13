@@ -3,7 +3,7 @@ LAA - HTTP REST Binding
 
 This file details the *HTTP REST Binding* which uses HTTPS as [Transport](LAA__Terminology_And_Definitions.md#Transport) protocol layer and JSON as [Data Format](LAA__Terminology_And_Definitions.md#DataFormat) protocol layer.
 
-The [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) acts as a HTTP client and the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) as a HTTP server. Each GP SERAM [Message](LAA__Terminology_And_Definitions.md#Message) may be transmitted in exactly one HTTP message.
+The [Local Applet Assistant](LAA__Terminology_And_Definitions.md#LAA) acts as a HTTP client and the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) as a HTTP server. Each [Message](LAA__Terminology_And_Definitions.md#Message) may be transmitted in exactly one HTTP message.
 
 The formal API specification of the *HTTP REST Binding* is provided in [OpenAPI format](/spec/laa.yaml). This specification file may be used to generate code skeleton as shown in maven project file (pom.xml).
 

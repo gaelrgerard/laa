@@ -11,9 +11,9 @@ skinparam lifelinestrategy solid
 "End User" -> "LAA" : deleteSAMService(name,aspSDAid)
 
  
-LAA -> "End User" : requestUserConsentOrAuthentification
-rnote over "End User": allow
-LAA <-- "End User"
+rnote over "LAA", "End User"
+     [0] End User interactions for user intent
+end rnote
 
 LAA -> LAA : generateSession()
 

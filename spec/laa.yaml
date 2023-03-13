@@ -112,7 +112,7 @@ paths:
       tags:
       - "samSmService"
       summary: "This function notifies the SAM SM of a SAM SD event"
-      description: "This function is called by the LAA to notify the SAM-SM that a SAM Application Management Operation has successfully been performed on the SAM SD."
+      description: "This function is called by the LAA to notify the SAM-SM that a SAM Application Management Operation has  been performed on the SAM SD."
       parameters:
         - name: sessionId
           in: query
@@ -305,6 +305,11 @@ components:
           $ref: "#/components/schemas/installationStep"
         samServiceIdentifier:
           $ref: "#/components/schemas/samServiceIdentifier"
+        rapdus: 
+          type: "array"
+          description: "list of rapdus"
+          items:
+            $ref: "#/components/schemas/binData"  
         extraData:
           type: "string"
     
