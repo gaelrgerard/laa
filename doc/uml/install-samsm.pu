@@ -21,12 +21,12 @@ LAA -> "SAM SD" : GET_DATA(SAMCertifTag)
 "SAM SM" -> "SAM SM" : retrieveOrGenerateScript(sessionId)
 "SAM SM" --> LAA : samEligibilityResponse(gpseramUri)
  
-LAA -> "End User" : requestUserConsentOrAuthentification
-rnote over "End User": allow
-LAA <-- "End User"
+rnote over "LAA", "End User"
+     [0] End User interactions for user intent
+end rnote
  
 rnote over "LAA", "SAM SM"
-     Process executeGPSERAMScript(sessionId, gpseramUri)
+     [1] Process executeGPSERAMScript(sessionId, gpseramUri)
 end rnote
  
 LAA --> "Device application" : notification(sessionId, aspSDAid, INSTALL)

@@ -10,9 +10,9 @@ skinparam lifelinestrategy solid
 "End User" -> "Device Application" : deleteDeviceApplication
 "Device Application" -> LAA : delete(sessionId, samSMFQDN, name)
 
-LAA -> "End User" : requestUserConsentOrAuthentification
-rnote over "End User": allow
-LAA <-- "End User"
+rnote over "LAA", "End User"
+     [0] End User interactions for user intent
+end rnote
  
 "LAA" -> "SAM SD" : DELETE_SAM_SERVICE(aspSDAid) 
 "SAM SD" --> LAA : deleteStatusWord
