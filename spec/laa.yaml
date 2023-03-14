@@ -58,7 +58,7 @@ paths:
                   $ref: "#/components/schemas/samInstallMsg"
       responses:
         "200":
-          description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED"
+          description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED for normal execution"
           content:
             application/json:
               schema:
@@ -183,6 +183,8 @@ components:
             - "INSTALL"
             - "PERSO"
             - "DELETE"
+            - "LOCK"
+            - "UNLOCK"
     deviceInfo:
       type: "object"
       properties:

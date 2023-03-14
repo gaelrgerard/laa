@@ -23,7 +23,7 @@ Selected terms used in this document are included in following table.
 | <a name="SAMSM">SAM SM</a>           | An entity which, on behalf of the Application Service Provider, is in charge of managing SAM Applets through SAM Commands |
 | <a name="SAMSMUri">SAM SM base URI</a>                                    | Base URI used by the LAA to trigger some management '{protocol}://{samfqdn}/gp/sam'                                                                                                                                |
 | <a name="SE">Secure Element</a>                              | Physical component attached with the Device manageable according with GP Card specification.                                                                                             |
-| <a name="sessionID">sessionId</a>                                       | An identifier shared between the Device Application and the SAM SM and associated with a Management Session                                                                 |
+| <a name="sessionID">sessionId</a>                                       | An identifier (uuid format) shared between the Device Application, LAA and the SAM SM and associated with a Management Session. It is generated either by the Device Application or by the LAA.                                                                  |
 | <a name="Transport">Transport</a>                                       | The transport protocol used between SAM SM and Local Applet Assistant.                                                                                                                        |
 
 
