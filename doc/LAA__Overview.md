@@ -55,7 +55,7 @@ See also "[End User](LAA__Terminology_And_Definitions.md#EU) interactions for us
 
 #### Online installation
 ![install-samsm-script](uml/install-samsm.svg)
-The GET DATA command is defined in [SAM Configuration](LAA__References.md#SAMCONF)  section�8.4
+The GET DATA command is defined in [SAM Configuration](LAA__References.md#SAMCONF)  section 8.4
 
 The [LAA](LAA__Terminology_And_Definitions.md#LAA)  SHALL be able to process [GPSERAM](LAA__References.md#GPSERAM) data containing SCP11a or SCP11c APDUs.
 
