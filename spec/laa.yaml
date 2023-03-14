@@ -9,7 +9,7 @@ info:
     url: 'https://opensource.org/licenses/MIT'
 tags:
 - name: "samSmService"
-  description: "This service allows to receive requests and notifications from LAA"
+  description: "This service allows to process requests and notifications from LAA"
 servers:
   - url: '{protocol}://{samfqdn}/gp/sam'
     variables:
@@ -314,6 +314,7 @@ components:
             $ref: "#/components/schemas/binData"  
         extraData:
           type: "string"
+          description: "can be set to indicate some useful extra data. For instance the installation mode"
     
     samManagementRespMsg:
       description: "This is the data model for the sam install or delete Response."

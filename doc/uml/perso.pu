@@ -14,7 +14,7 @@ ASP -> "SAM SM" : perso(sessionId, endUserPersoInfo)
 "ASP" --> "Device Application" : registrationComplete
 "Device Application" -> LAA : continueGPSERAMSession(sessionId)
 rnote over "LAA", "SAM SM"
-     Process executeGPSERAMScript(sessionId, persoUri)
+    [1] Process executeGPSERAMScript(sessionId, persoUri)
 end rnote
  
  

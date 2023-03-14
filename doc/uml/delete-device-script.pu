@@ -14,8 +14,9 @@ rnote over "LAA", "End User"
      [0] End User interactions for user intent
 end rnote
 
+
 rnote over "LAA", "SAM SM"
-     Process executeScript(sessionId, deleteScriptUri)
+     [1] Process executeScript(sessionId, deleteScriptUri)
 end rnote
 
 
