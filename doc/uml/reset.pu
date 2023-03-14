@@ -17,14 +17,17 @@ end rnote
 
 LAA -> LAA : generateSession()
 
-LAA -> "ASP SD" : GET_DATA(SAMServiceInfoTag)
-"ASP SD" --> LAA : SAMServiceInfo(SAMSM_FQDN)  
+LAA -> "SAM SD" : GET_DATA(SAMServicesListTag)
+"SAM SD" --> LAA : SAMServicesList  
 
-"LAA" -> "SAM SD" : DELETE_SAM_SERVICES(aspSDAid) 
+"LAA" -> "SAM SD" : DELETE_SAM_SERVICES(DeleteAllASPSDs) 
 "SAM SD" --> LAA : deleteStatusWord
 
+loop for each SAM service in list
  
 LAA --> "Device application" : notification(sessionId, aspSDAid, DELETE)
  
 LAA --> "SAM SM" : notification(SAMSM_FQDN, sessionId, aspSDAid, DELETE)
+end loop
+
 @enduml
