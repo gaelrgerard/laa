@@ -1,4 +1,4 @@
-Local Applet Assistant (LAA) <-> SAM SM 
+Local Applet Assistant (LAA) <-> SAM SM Interface
 ========
 
 Introduction
