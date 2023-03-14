@@ -1,0 +1,19 @@
+
+@startuml
+ 
+hide footbox
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowFontSize 11
+skinparam noteFontSize 11
+skinparam monochrome true
+skinparam lifelinestrategy solid
+ 
+"End User" -> "LAA" : requestServiceList()
+
+LAA -> "SAM SD" : GET_DATA(SAMServicesListTag)
+"SAM SD" --> LAA : SAMServicesList  
+
+"LAA" --> "LAA" : display(SAMServicesList)
+
+
+@enduml
