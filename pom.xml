@@ -53,7 +53,7 @@
             <plugin>
                 <groupId>org.openapitools</groupId>
                 <artifactId>openapi-generator-maven-plugin</artifactId>
-                <version>6.2.1</version>
+                <version>6.4.0</version>
                 <configuration>                    
                     <sourceFolder>java/main</sourceFolder>                    
                     <inputSpec>${basedir}/spec/laa.yaml</inputSpec>                    

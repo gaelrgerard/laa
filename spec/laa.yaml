@@ -51,22 +51,14 @@ paths:
         content:
           application/json:
             schema:
-              required:
-              - "samInstallMsg"
-              properties:
-                samInstallMsg:
-                  $ref: "#/components/schemas/samInstallMsg"
+              $ref: "#/components/schemas/samInstallMsg"
       responses:
         "200":
           description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED for normal execution"
           content:
             application/json:
               schema:
-                required:
-                - "samInstallResponse"
-                properties:
-                  samInstallResponse:
-                    $ref: "#/components/schemas/samManagementRespMsg"
+                $ref: "#/components/schemas/samManagementRespMsg"
         "409":
           description: "Conflict with already existing session"
         "500":
@@ -87,22 +79,14 @@ paths:
         content:
           application/json:
             schema:
-              required:
-              - "samDeleteMsg"
-              properties:
-                samDeleteMsg:
-                  $ref: "#/components/schemas/samDeleteMsg"
+              $ref: "#/components/schemas/samDeleteMsg"
       responses:
         "200":
           description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED"
           content:
             application/json:
               schema:
-                required:
-                - "samDeleteResponse"
-                properties:
-                  samDeleteResponse:
-                    $ref: "#/components/schemas/samManagementRespMsg"
+                $ref: "#/components/schemas/samManagementRespMsg"
         "409":
           description: "Conflict with already existing session"
         "500":
@@ -123,11 +107,7 @@ paths:
         content:
           application/json:
             schema:
-              required:
-              - "notificationMsg"
-              properties:
-                notificationMsg:
-                  $ref: "#/components/schemas/notificationMsg"
+              $ref: "#/components/schemas/notificationMsg"
       responses:
         "200":
           description: "notification process successfully"
@@ -149,12 +129,13 @@ components:
         seType:
           type: "string"
           enum:
-            - "eSE"
-            - "uicc"
-            - "euicc/removable"
-            - "euicc/embedded"
-            - "euicc/integrated"
-            - "notdefined"
+            - "ESE"
+            - "UICC"
+            - "EUICC_REMOVABLE"
+            - "EUICC"
+            - "EUICC_INTEGRATED"
+            - "NOT_DEFINED"
+            - "UNKNOWN"
         seId:
           type: "string"
           example: "89001012012341234012345678901224"
