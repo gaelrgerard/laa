@@ -238,6 +238,25 @@ components:
         extraData:
           type: string
           example: "sam service instance 1"
+    
+    samServiceScriptResp:
+     required:
+        - "scriptIdentifier"
+        - "rapdus"
+     properties:
+        scriptIdentifier :
+          type: string
+          example: "delete sam service instance 1"
+        apdus: 
+          type: "array"
+          description: "list of apdus"
+          items:
+            $ref: "#/components/schemas/binData"
+        rapdus: 
+          type: "array"
+          description: "list of corresponding rapdus"
+          items:
+            $ref: "#/components/schemas/binData"        
                 
     functionExecutionStatus:
       required:
@@ -307,11 +326,8 @@ components:
           $ref: "#/components/schemas/installationStep"
         samServiceIdentifier:
           $ref: "#/components/schemas/samServiceIdentifier"
-        rapdus: 
-          type: "array"
-          description: "list of rapdus"
-          items:
-            $ref: "#/components/schemas/binData"  
+        samServiceScriptResp: 
+          $ref: "#/components/schemas/samServiceScriptResp"   
         extraData:
           type: "string"
           description: "can be set to indicate some useful extra data. For instance the installation mode"

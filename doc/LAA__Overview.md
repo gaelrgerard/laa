@@ -70,6 +70,7 @@ The [LAA](LAA__Terminology_And_Definitions.md#LAA)  SHALL also be able to proces
 
 In this mode, *install* is not sent to the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and [LAA](LAA__Terminology_And_Definitions.md#LAA)  performs a local eligibility check and installation. The Device Application relies only on the [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks. [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks are out of scope of this specification. *samSMFQDN* parameter is only used for the notification.
 
+The notification SHALL contain *samServiceScriptResp* parameter in this mode because the response is not provided through [GPSERAM](LAA__References.md#GPSERAM) script.
 
 ### Personalization
 
@@ -112,6 +113,8 @@ Notifications (to SAM SMs and to device applications) are send for each SAM serv
 
 This process allows an [End User](LAA__Terminology_And_Definitions.md#EU) to request the list of all SAM Services. No user intent is required for this operation.
 
+Optionnaly when an [End User](LAA__Terminology_And_Definitions.md#EU) want to display information about a specific SAM Service, the LAA MAY retrieve extra information in the CRS application (see [SAM Configuration](LAA__References.md#SAMCONF) section 4.3)
+ASP RID in a GET STATUS command MAY be used to filter SAM Service.
 
 ### End user interactions for user intent
 
