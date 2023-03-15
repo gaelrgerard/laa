@@ -230,16 +230,21 @@ components:
             $ref: "#/components/schemas/samCertificate"  
   
     samServiceIdentifier:
+     description: "used to uniquely identified a SAM service on a SAM SM"
      required:
         - "aspSdAid"
      properties:
         aspSdAid:
           $ref: "#/components/schemas/aid"
+        samServiceName:
+          type: string
+          example: "awesome sam service"
         extraData:
           type: string
-          example: "sam service instance 1"
+          example: "instance 1"
     
     samServiceScriptResp:
+     description: "sam service script resp shall be used in case of local script execution. It is needed for the SAM SM in order to retrieve the ASP SD keys"
      required:
         - "scriptIdentifier"
         - "rapdus"
@@ -259,6 +264,7 @@ components:
             $ref: "#/components/schemas/binData"        
                 
     functionExecutionStatus:
+      description: "Whether the function has been processed correctly or not (like SGP22)"
       required:
         - "status"
       properties:
