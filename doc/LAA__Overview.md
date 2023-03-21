@@ -79,6 +79,7 @@ Typically a SAM script contains at least the following APDU commands:
 -	INSTALL [for personalization] + STORE DATA(s) in order to personalize this ASP SD. The result shall be used by the SAM SM in order to retrieve the personalized ASP SD keys.
 -	INSTALL [for load] + LOAD(s) in order to load SAM Applet(s)
 -	INSTALL [for install and make selectable] in order to make the SAM Applet(s) selectable
+
 A SAM script should also contain the following commands:
 -	INSTALL [for install] in order to install the ARA-C
 -	INSTALL [for personalization] + STORE DATA(s) in order to add a new access rule on the ARA-C.
