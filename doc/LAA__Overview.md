@@ -72,6 +72,18 @@ In this mode, *install* is not sent to the [SAM SM](LAA__Terminology_And_Definit
 
 The notification SHALL contain *samServiceScriptResp* parameter in this mode because the response is not provided through [GPSERAM](LAA__References.md#GPSERAM) script.
 
+#### SAM script commands
+
+Typically a SAM script contains at least the following APDU commands:
+-	INSTALL [for install] in order to create the ASP SD
+-	INSTALL [for personalization] + STORE DATA(s) in order to personalize this ASP SD. The result shall be used by the SAM SM in order to retrieve the personalized ASP SD keys.
+-	INSTALL [for load] + LOAD(s) in order to load SAM Applet(s)
+-	INSTALL [for install and make selectable] in order to make the SAM Applet(s) selectable
+A SAM script should also contain the following commands:
+-	INSTALL [for install] in order to install the ARA-C
+-	INSTALL [for personalization] + STORE DATA(s) in order to add a new access rule on the ARA-C.
+
+
 ### Personalization
 
 This section describes how an SAM applet MAY be personalized by [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM). Notice that a SAM applet may be personalized through other means that are out of the scope of this specification.
