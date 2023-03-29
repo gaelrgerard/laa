@@ -55,8 +55,7 @@ paths:
             examples:
                 install:
                   summary: install message
-                  value: 
-                    $ref: "test.json"
+                  externalValue: "test.json"
       responses:
         "200":
           description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED for normal execution"
