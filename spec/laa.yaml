@@ -55,7 +55,7 @@ paths:
             examples:
                 install:
                   summary: install message
-                  externalValue: "test.json"
+                  externalValue: "examples/install_req.json"
       responses:
         "200":
           description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED for normal execution"
@@ -63,6 +63,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/samManagementRespMsg"
+              examples:
+                install_ok:
+                  summary: install resp with ram session
+                  externalValue: "examples/install_resp_ok.json"
+                install_nok:
+                  summary: install resp with failure
+                  externalValue: "examples/install_resp_nok.json"
         "409":
           description: "Conflict with already existing session"
         "500":
@@ -91,6 +98,13 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/samManagementRespMsg"
+            examples:
+                delete_ok:
+                  summary: delete resp with ram session
+                  externalValue: "examples/delete_resp_ok.json"
+                delete_nok:
+                  summary: delete resp with failure
+                  externalValue: "examples/delete_resp_nok.json"
         "409":
           description: "Conflict with already existing session"
         "500":
@@ -241,13 +255,19 @@ components:
           type: "array"
           description: "list of apdus"
           items:
-            $ref: "#/components/schemas/binData"
+            $ref: "#/components/schemas/apdu"
         rapdus: 
           type: "array"
           description: "list of corresponding rapdus"
           items:
-            $ref: "#/components/schemas/binData"        
+            $ref: "#/components/schemas/apdu"        
+    
                 
+    apdu:
+      description: hexadecimal encoded APDU
+      type: string
+      pattern: '([0-9A-F]{2})*'
+      
     functionExecutionStatus:
       description: "Whether the function has been processed correctly or not (like SGP22)"
       required:
