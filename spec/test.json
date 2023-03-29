@@ -1,0 +1,24 @@
+{
+  "samServiceIdentifier": {
+    "aspSdAid": "A00001510000",
+    "samServiceName": "awesome sam service",
+    "extraData": "instance 1"
+  },
+  "samEligibilityData": {
+    "secureElement": {
+      "seType": "ESE",
+      "seId": "89001012012341234012345678901224"
+    },
+    "samVersion": "1.0.0",
+    "samSDEligibilityData": "dGhpcyBpcyBhbiBleGFtcGxl",
+    "deviceInfo": {
+      "openMobileApiVersion": "1.0.0"
+    },
+    "samCertificates": [
+      {
+        "data": "dGhpcyBpcyBhbiBleGFtcGxl",
+        "certificateFormat": "x509"
+      }
+    ]
+  }
+}
