@@ -129,13 +129,13 @@ paths:
             examples:
                 notif_install_ok:
                   summary: install notification OK
-                  externalValue: "examples/notification_install_ok.json"
+                  externalValue: "notification_install_ok.json"
                 notif_offline_install_ok:
                   summary: install notification OK for an offline script
-                  externalValue: "examples/notification_offline_install_script_ok.json"
+                  externalValue: "notification_offline_install_script_ok.json"
                 notif_delete_ok:
                   summary: delete notification OK
-                  externalValue: "examples/notification_delete_ok.json"
+                  externalValue: "notification_delete_ok.json"
       responses:
         "200":
           description: "notification process successfully"

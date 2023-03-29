@@ -2,14 +2,14 @@
   "functionExecutionStatus": {
     "status": "EXECUTED_SUCCESS"
   },
-  "installationStep": "DELETE",
+  "installationStep": "INSTALL",
   "samServiceIdentifier": {
     "aspSdAid": "A0000001020304050607",
     "samServiceName": "awesome sam service",
     "extraData": "instance 1"
   },
   "samServiceScriptResp": {
-    "scriptIdentifier": "delete_script1"
+    "scriptIdentifier": "install_script1"
   },
-  "extraData": "online delete mode"
+  "extraData": "online install mode"
 }
