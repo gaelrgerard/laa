@@ -55,7 +55,7 @@ paths:
             examples:
                 install:
                   summary: install message
-                  externalValue: "examples/install_req.json"
+                  externalValue: "https://gaelrgerard.github.io/laa/spec/examples/install_req.json"
       responses:
         "200":
           description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED for normal execution"
