@@ -24,7 +24,7 @@ rnote over "LAA", "End User"
 end rnote
 
 rnote over "LAA", "SAM SD"
-     [1] Process executeScript(sessionId, localScriptUri)
+     [1b] Process executeGPSERAMFileScript(sessionId, localScriptUri)
 end rnote
  
 LAA --> "Device Application" : notification(sessionId, aspSDAid, INSTALL)

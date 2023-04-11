@@ -26,7 +26,7 @@ rnote over "LAA", "End User"
 end rnote
  
 rnote over "LAA", "SAM SM"
-     [1] Process executeGPSERAMScript(sessionId, gpseramUri)
+     [1a] Process executeGPSERAMScript(sessionId, gpseramUri)
 end rnote
  
 LAA --> "Device application" : notification(sessionId, aspSDAid, INSTALL)
