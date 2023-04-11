@@ -36,12 +36,49 @@
         <script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.18.1/swagger-ui-standalone-preset.js"></script>
         <script>
             // Examples map
+            const req_examples = {};
             const examples = {};
 
         // Custom plugin for logic that happens before the response element is created
             const CustomPlugin = () => {
                 return {
                     wrapComponents: {
+                        request: (Original, { React, oas3Actions, oas3Selectors }) => (props) => {
+                                const contentType = oas3Selectors.requestContentType(props.path, props.method);
+                                const externalValue = props.request.getIn(['content', contentType, 'req_examples', props.activeExamplesKey, 'externalValue']);
+                                // Check if externalValue field exists
+                                if (externalValue) {
+                                    // Check if examples map already contains externalValue key
+                                    if (req_examples[externalValue]) {
+                                        // Set example value directly from examples map
+                                        props.request = props.request.setIn(['content', contentType, 'req_examples', props.activeExamplesKey, 'value'], req_examples[externalValue]);
+                                    } else {
+                                        // Download external file
+                                        fetch(externalValue)
+                                                .then(res => res.text())
+                                                .then(data => {
+                                                    // Put downloaded file content into the examples map
+                                                    req_examples[externalValue] = data;
+                                                    // Simulate select another example action
+                                                    oas3Actions.setActiveExamplesMember({
+                                                        "name": 'fake',
+                                                        "pathMethod": [props.path, props.method],
+                                                        "contextType": "requests",
+                                                        "contextName": props.code
+                                                    });
+                                                    // Reselect this example
+                                                    oas3Actions.setActiveExamplesMember({
+                                                        "name": props.activeExamplesKey,
+                                                        "pathMethod": [props.path, props.method],
+                                                        "contextType": "requests",
+                                                        "contextName": props.code
+                                                    });
+                                                })
+                                                .catch(e => console.error(e));
+                                    }
+                                }
+                                return React.createElement(Original, props);
+                            },
                         response: (Original, { React, oas3Actions, oas3Selectors }) => (props) => {
                                 const contentType = oas3Selectors.responseContentType(props.path, props.method);
                                 const externalValue = props.response.getIn(['content', contentType, 'examples', props.activeExamplesKey, 'externalValue']);
