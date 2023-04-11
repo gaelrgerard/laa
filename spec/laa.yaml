@@ -365,9 +365,8 @@ components:
           format: uri
           example: "https://sam-sm.server1.com/gp/seram/script1"
           
- examples:
+  examples:
     InstallReq:
       summary: install message
       externalValue: 'examples/install_req.json'
-    InstallResp:
     
