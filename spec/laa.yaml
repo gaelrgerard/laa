@@ -101,7 +101,7 @@ paths:
               examples:
                 delete_ok:
                   summary: delete resp with ram session
-                  externalValue: "/laa/spec/examples/delete_resp_ok.json"
+                  externalValue: "examples/delete_resp_ok.json"
                 delete_nok:
                   summary: delete resp with failure
                   externalValue: "/laa/spec/examples/delete_resp_nok.json"
