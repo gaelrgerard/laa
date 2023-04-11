@@ -1,0 +1,10 @@
+{
+  "functionExecutionStatus": {
+    "status": "FAILED",
+    "statusCodeData": {
+      "subjectCode": "2",
+      "reasonCode": "3",
+      "message": "SAM SD capabilities is not compliant with SAM Service"
+    }
+  }
+}
