@@ -53,9 +53,8 @@ paths:
             schema:
               $ref: "#/components/schemas/samInstallMsg"
             examples:
-                install:
-                  summary: install message
-                  externalValue: 'examples/install_req.json'
+                installReq:
+                  $ref: '#/components/examples/InstallReq'
       responses:
         "200":
           description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED for normal execution"
@@ -365,3 +364,10 @@ components:
           type: string
           format: uri
           example: "https://sam-sm.server1.com/gp/seram/script1"
+          
+ examples:
+    InstallReq:
+      summary: install message
+      externalValue: 'examples/install_req.json'
+    InstallResp:
+    
