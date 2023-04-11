@@ -126,8 +126,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/notificationMsg"
-            examples:
-              jsonObject:
+            examples:              
                 notif_install_ok:
                   summary: install notification OK
                   externalValue: "notification_install_ok.json"
