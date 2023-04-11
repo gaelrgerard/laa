@@ -101,10 +101,10 @@ paths:
               examples:
                 delete_ok:
                   summary: delete resp with ram session
-                  externalValue: "examples/delete_resp_ok.json"
+                  externalValue: "/laa/spec/examples/delete_resp_ok.json"
                 delete_nok:
                   summary: delete resp with failure
-                  externalValue: "examples/delete_resp_nok.json"
+                  externalValue: "/laa/spec/examples/delete_resp_nok.json"
         "409":
           description: "Conflict with already existing session"
         "500":
