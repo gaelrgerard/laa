@@ -55,7 +55,7 @@ paths:
             examples:
                 install:
                   summary: install message
-                  externalValue: "https://gaelrgerard.github.io/laa/spec/examples/install_req.json"
+                  externalValue: 'https://gaelrgerard.github.io/laa/spec/examples/install_req.json'
       responses:
         "200":
           description: "RAM session is successfully created or retrieved. functionExecutionStatus SHALL be set to RAM_SESSION_CREATED for normal execution"
@@ -66,10 +66,10 @@ paths:
               examples:
                 install_ok:
                   summary: install resp with ram session
-                  externalValue: "examples/install_resp_ok.json"
+                  externalValue: 'https://gaelrgerard.github.io/laa/spec/examples/install_resp_ok.json'
                 install_nok:
                   summary: install resp with failure
-                  externalValue: "examples/install_resp_nok.json"
+                  externalValue: 'https://gaelrgerard.github.io/laa/spec/examples//install_resp_nok.json'
         "409":
           description: "Conflict with already existing session"
         "500":
