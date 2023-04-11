@@ -69,7 +69,7 @@ paths:
                   externalValue: 'https://gaelrgerard.github.io/laa/spec/examples/install_resp_ok.json'
                 install_nok:
                   summary: install resp with failure
-                  externalValue: 'https://gaelrgerard.github.io/laa/spec/examples//install_resp_nok.json'
+                  externalValue: 'https://gaelrgerard.github.io/laa/spec/examples/install_resp_nok.json'
         "409":
           description: "Conflict with already existing session"
         "500":
