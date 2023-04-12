@@ -126,6 +126,8 @@ paths:
                   $ref: '#/components/examples/notifInstallOK'
                 notif_offline_install_ok:
                   $ref: '#/components/examples/notifOfflineInstallOK'
+                notif_offline_install_ko:
+                  $ref: '#/components/examples/notifOfflineInstallNOK'
                 notif_delete_ok:
                   $ref: '#/components/examples/notifDeleteOK'
       responses:
@@ -458,6 +460,26 @@ components:
                 "scriptIdentifier": "offline_install_script1",    
                 "rapdus": [
                   "9000"
+                ]
+              },
+              "extraData": "offline mode"
+            }
+    notifOfflineInstallNOK:
+      summary: install notification KO for an offline script
+      value: {
+              "functionExecutionStatus": {
+                "status": "FAILED"
+              },
+              "installationStep": "INSTALL",
+              "samServiceIdentifier": {
+                "aspSdAid": "A0000001020304050608",
+                "samServiceName": "awesome sam service",
+                "extraData": "instance 2"
+              },
+              "samServiceScriptResp": {
+                "scriptIdentifier": "offline_install_script2",    
+                "rapdus": [
+                  "6985"
                 ]
               },
               "extraData": "offline mode"
