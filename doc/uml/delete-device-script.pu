@@ -7,7 +7,11 @@ skinparam noteFontSize 11
 skinparam monochrome true
 skinparam lifelinestrategy solid
  
-"End User" -> "Device Application" : deleteDeviceApplication
+rnote over "End User", "Device Application"
+     End User deletes Device Application 
+     containing a delete script uri
+end rnote
+
 "Device Application" -> LAA : delete(sessionId, samSMFQDN, deleteScriptUri)
 
 rnote over "LAA", "End User"
