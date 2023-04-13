@@ -7,7 +7,11 @@ skinparam noteFontSize 11
 skinparam monochrome true
 skinparam lifelinestrategy solid
 
-"End User" -> "Device Application" : installDeviceApplication
+
+rnote over "End User", "Device Application"
+     End User install a new Device Application containing a SAM script
+end rnote
+
 "Device Application" -> LAA : install(sessionId, samSMFQDN, localScriptUri)
 LAA -> "SAM SD" : GET_DATA(SAMEligibilityInfoTag)
 "SAM SD" --> LAA : SAMEligibilityInfo  
