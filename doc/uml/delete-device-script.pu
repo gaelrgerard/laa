@@ -16,7 +16,7 @@ end rnote
 
 
 rnote over "LAA", "SAM SM"
-     [1b] Process executeGPSERAMFileScript(sessionId, deleteScriptUri)
+     [1b] Process executeGPSERAMScriptFile(sessionId, deleteScriptUri)
 end rnote
 
 
