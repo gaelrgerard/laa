@@ -7,8 +7,8 @@ skinparam noteFontSize 11
 skinparam monochrome true
 skinparam lifelinestrategy solid
  
-rnote over "End User" -> "Device application"
-     "End User install a new Device Application
+rnote over "End User", "Device application"
+     "End User installs a new Device Application
       looking for a SAM script on SAM SM"
 end rnote
 
