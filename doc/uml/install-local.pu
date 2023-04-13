@@ -9,7 +9,8 @@ skinparam lifelinestrategy solid
 
 
 rnote over "End User", "Device Application"
-     End User install a new Device Application containing a SAM script
+     "End User install a new Device Application
+      containing a SAM script"
 end rnote
 
 "Device Application" -> LAA : install(sessionId, samSMFQDN, localScriptUri)
