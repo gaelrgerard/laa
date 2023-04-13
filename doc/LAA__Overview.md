@@ -62,7 +62,7 @@ In this mode, the Device Application sends a null parameter as *localScriptUri*,
 Optionally at the end of this process, the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) MAY execute a GET STATUS command for a given ASP SD AID.
 
 #### Local script
-When a local (file) script is provided by the Device Application, it can be consumed by the LAA through a uri.
+When a local (file) script is provided by the Device Application, it can be consumed by the  [LAA](LAA__Terminology_And_Definitions.md#LAA) through a uri.
 ![install-local-script](uml/install-local.svg)
 
 It means that *localScriptUri* parameter can be provided by the Device Application for local execution (for instance [file://data/local/euicc/sam/script1](file://data/local/euicc/sam/script1)).
@@ -82,7 +82,7 @@ Typically a SAM script contains at least the following APDU commands:
 A SAM script should also contain the following commands:
 -	INSTALL [for install] in order to install the ARA-C
 -	INSTALL [for personalization] + STORE DATA(s) in order to add a new access rule on the ARA-C.
-
+These APDU commands are defined in [GP Card Spec](LAA__References.md#GPC_SPE).
 
 ### Personalization
 

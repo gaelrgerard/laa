@@ -8,7 +8,7 @@ skinparam noteFontSize 11
 skinparam monochrome true
 skinparam lifelinestrategy solid
  
-"End User" -> "LAA" : requestServiceList()
+"End User" -> "LAA" : requestServiceList
 
 LAA -> "SAM SD" : GET_DATA(SAMServicesListTag)
 "SAM SD" --> LAA : SAMServicesList  

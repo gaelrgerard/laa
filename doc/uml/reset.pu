@@ -8,7 +8,7 @@ skinparam noteFontSize 11
 skinparam monochrome true
 skinparam lifelinestrategy solid
  
-"End User" -> "LAA" : requestMemoryReset()
+"End User" -> "LAA" : requestMemoryReset
 
  
 rnote over "LAA", "End User"
