@@ -499,5 +499,5 @@ components:
               "samServiceScriptResp": {
                 "scriptIdentifier": "delete_script1"
               },
-              "extraData": "online delete mode"
+              "extraData": "online delete mode "
             }
