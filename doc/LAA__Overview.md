@@ -86,7 +86,7 @@ These APDU commands are defined in [GP Card Spec](LAA__References.md#GPC_SPE).
 
 ### Personalization
 
-This section describes how an SAM applet MAY be personalized by [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM). Notice that a SAM applet may be personalized through other means that are out of the scope of this specification.
+This section describes how an SAM applet MAY be personalized by [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM). This optional process MAY be trigerred by the Device Application at some point. Generally, it occurs when the end user registered to this ASP.  Notice that a SAM applet may be personalized through other means that are out of the scope of this specification.
 
 ![install-local-script](uml/perso.svg)
 
