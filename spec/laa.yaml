@@ -15,7 +15,7 @@ servers:
     variables:
       samfqdn:
         default: localhost
-        description: sam server domain (or sam server domain + plus suffix) 
+        description: sam server domain (or sam server domain + plus suffix)
       protocol:
         description: http shall be used only for testing purpose
         enum:
@@ -97,7 +97,7 @@ paths:
                 $ref: "#/components/schemas/samManagementRespMsg"
               examples:
                 delete_ok:
-                  $ref: '#/components/examples/deleteRespOK'                  
+                  $ref: '#/components/examples/deleteRespOK'
                 delete_nok:
                   $ref: '#/components/examples/deleteRespNOK'
         "409":
@@ -121,7 +121,7 @@ paths:
           application/json:
             schema:
               $ref: "#/components/schemas/notificationMsg"
-            examples:              
+            examples:
                 notif_install_ok:
                   $ref: '#/components/examples/notifInstallOK'
                 notif_offline_install_ok:
@@ -174,12 +174,12 @@ components:
     version:
       type: "string"
       example: "1.0.0"
-      
+
     oid:
       type: "string"
       pattern: ^([0-2])((\.0)|(\.[1-9][0-9]*))*$
-      example: "1.0"            
-      
+      example: "1.0"
+
     installationStep:
       type: "string"
       enum:
@@ -194,20 +194,26 @@ components:
         openMobileApiVersion:
           $ref: "#/components/schemas/version"
     
-    samCertificate:
+    samCertificateChain:
       type: "object"
       required:
         - "data"
         - "certificateFormat"
+        - "caIdentifier"
       properties :
-        data: 
-          $ref: "#/components/schemas/binData"
-        certificateFormat: 
+        data:
+          description: "sam certificate shall be ordered from the SAM SD certificate (first in the list) to the SAM CA (last in the list)"
+          type: "array"
+          items:
+            $ref: "#/components/schemas/binData"
+        certificateFormat:
           type: "string"
           enum:
             - "x509"
             - "GP"
-    
+        caIdentifier:
+          type: "string"
+
     samEligibilityData:
       description: "this command alow to perform an eligibility check. samSDEligibilityData is the concatenation of the GET DATA responses performed on the SAM SD : CCI, CRD, SAMInfo"
       type: "object"
@@ -228,10 +234,9 @@ components:
           $ref: "#/components/schemas/deviceInfo"
         samCertificates:
           type: "array"
-          description: "sam certificate shall be ordered from the SAM SD certificate (first in the list) to the SAM CA (last in the list)"
           items:
-            $ref: "#/components/schemas/samCertificate"  
-  
+            $ref: "#/components/schemas/samCertificateChain"
+
     samServiceIdentifier:
      description: "used to uniquely identified a SAM service on a SAM SM"
      required:
@@ -245,7 +250,7 @@ components:
         extraData:
           type: string
           example: "instance 1"
-    
+
     samServiceScriptResp:
      description: "sam service script resp shall be used in case of local script execution. It is needed for the SAM SM in order to retrieve the ASP SD keys"
      required:
@@ -255,40 +260,40 @@ components:
         scriptIdentifier :
           type: string
           example: "delete sam service instance 1"
-        apdus: 
+        apdus:
           type: "array"
           description: "list of apdus"
           items:
             $ref: "#/components/schemas/apdu"
-        rapdus: 
+        rapdus:
           type: "array"
           description: "list of corresponding rapdus"
           items:
-            $ref: "#/components/schemas/apdu"        
-    
-                
+            $ref: "#/components/schemas/apdu"
+
+
     apdu:
       description: hexadecimal encoded APDU
       type: string
       pattern: '([0-9A-F]{2})*'
-      
+
     functionExecutionStatus:
       description: "Whether the function has been processed correctly or not (like SGP22)"
       required:
         - "status"
       properties:
-         status: 
+         status:
           type: "string"
           enum:
                 - "EXECUTED_SUCCESS"
                 - "EXECUTED_WARNING"
                 - "FAILED"
                 - "EXPIRED"
-                - "RAM_SESSION_CREATED" 
+                - "RAM_SESSION_CREATED"
          statusCodeData:
           $ref: "#/components/schemas/statusCodeData"
     statusCodeData:
-      description : 
+      description :
        "status code data like GSMA RSP"
       required:
         - "subjectCode"
@@ -305,7 +310,7 @@ components:
           type: string
           description: Textual and human readable explanation
           example: "SAM SD capabilities is not compliant with SAM Service"
-    
+
     samInstallMsg:
       description: "this msg alow to trigger an install on a SAM SD"
       type: "object"
@@ -317,7 +322,7 @@ components:
           $ref: "#/components/schemas/samServiceIdentifier"
         samEligibilityData:
           $ref: "#/components/schemas/samEligibilityData"
-    
+
     samDeleteMsg:
       description: "this msg alow to trigger a delete on a SAM SD"
       type: "object"
@@ -326,7 +331,7 @@ components:
       properties:
         samServiceIdentifier:
           $ref: "#/components/schemas/samServiceIdentifier"
-     
+
     notificationMsg:
       description: "This is the data model for the notification msg"
       type: "object"
@@ -341,12 +346,12 @@ components:
           $ref: "#/components/schemas/installationStep"
         samServiceIdentifier:
           $ref: "#/components/schemas/samServiceIdentifier"
-        samServiceScriptResp: 
-          $ref: "#/components/schemas/samServiceScriptResp"   
+        samServiceScriptResp:
+          $ref: "#/components/schemas/samServiceScriptResp"
         extraData:
           type: "string"
           description: "can be set to indicate some useful extra data. For instance the installation mode"
-    
+
     samManagementRespMsg:
       description: "This is the data model for the sam install or delete Response."
       type: "object"
@@ -359,8 +364,8 @@ components:
           type: string
           format: uri
           example: "https://sam-sm.server1.com/gp/seram/script1"
-          
-  examples:   
+
+  examples:
     installReq:
       summary: install message
       value: {
@@ -457,7 +462,7 @@ components:
                 "extraData": "instance 1"
               },
               "samServiceScriptResp": {
-                "scriptIdentifier": "offline_install_script1",    
+                "scriptIdentifier": "offline_install_script1",
                 "rapdus": [
                   "9000"
                 ]
@@ -477,7 +482,7 @@ components:
                 "extraData": "instance 2"
               },
               "samServiceScriptResp": {
-                "scriptIdentifier": "offline_install_script2",    
+                "scriptIdentifier": "offline_install_script2",
                 "rapdus": [
                   "6985"
                 ]
