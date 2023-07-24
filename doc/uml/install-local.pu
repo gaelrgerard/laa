@@ -11,6 +11,7 @@ skinparam lifelinestrategy solid
 rnote over "End User", "Device Application"
      "End User installs a new Device Application
       containing a SAM script"
+end rnote
 
 rnote over "LAA", "SAM SD"
      [0] Process getSAMEligibilityInfos
