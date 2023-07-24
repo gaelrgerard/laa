@@ -49,13 +49,13 @@ Same [sessionId](LAA__Terminology_And_Definitions.md#sessionId) SHALL be used fo
 Protocol details
 ----------------------
 In the following sequence diagrams, the process [2a] *executeGPSERAMScript* is defined in [GPSERAM](LAA__References.md#GPSERAM) (Protocol Overview Diagram).  The process [2b] *executeGPSERAMScriptFile* use the same data elements but is processed locally using a file. In both cases, The [LAA](LAA__Terminology_And_Definitions.md#LAA)  is able to process a script containing APDUs.
-See also "[End User](LAA__Terminology_And_Definitions.md#EU) interactions for user intent" section for process [1]
+- See [eligibility](LAA__Overview.md#sam-eligibility-information) section for process [0]
+- See also "[End User interactions for user intent](LAA__Overview.md#end-user-interactions-for-user-intent) " section for process [1]
 
 ### Installation
 
 #### Online installation
 ![install-samsm-script](uml/install-samsm.svg)
-The GET DATA command is defined in [SAM Configuration](LAA__References.md#SAMCONF)  section 8.4
 
 In this mode, the Device Application sends a null parameter as *localScriptUri*, and the *install* response contains the *gpseramUri* (for instance [https://sam-sm.server1.com/gp/seram/script1](https://sam-sm.server1.com/gp/seram/script1)).
 
@@ -70,6 +70,14 @@ It means that *localScriptUri* parameter can be provided by the Device Applicati
 In this mode, *install* is not sent to the [SAM SM](LAA__Terminology_And_Definitions.md#SAMSM) and [LAA](LAA__Terminology_And_Definitions.md#LAA)  performs a local eligibility check and installation. The Device Application relies only on the [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks. [LAA](LAA__Terminology_And_Definitions.md#LAA)  checks are out of scope of this specification. *samSMFQDN* parameter is only used for the notification.
 
 The notification SHALL contain *samServiceScriptResp* parameter in this mode because the response is not provided through [GPSERAM](LAA__References.md#GPSERAM) script.
+
+#### SAM eligibility information
+This is a sub process for installation. It allows to retrieve all relevant information from the SAM SD to perform an eligibility process
+
+![install-samsm-script](uml/getSAMEligibilityInfos.svg)
+
+The GET DATA command is defined in [SAM Configuration](LAA__References.md#SAMCONF)  section 8.4
+
 
 #### SAM commands install sequence
 
