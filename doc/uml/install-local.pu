@@ -11,25 +11,19 @@ skinparam lifelinestrategy solid
 rnote over "End User", "Device Application"
      "End User installs a new Device Application
       containing a SAM script"
+
+rnote over "LAA", "SAM SD"
+     [0] Process getSAMEligibilityInfos
 end rnote
 
-"Device Application" -> LAA : install(sessionId, samSMFQDN, localScriptUri)
-LAA -> "SAM SD" : GET_DATA(SAMEligibilityInfoTag)
-"SAM SD" --> LAA : SAMEligibilityInfo  
-LAA -> "SAM SD" : GET_DATA(CRDTag)
-"SAM SD" --> LAA : CRD
-LAA -> "SAM SD" : GET_DATA(CCITag)
-"SAM SD" --> LAA : CCI
-LAA -> "SAM SD" : GET_DATA(SAMCertifTag)
-"SAM SD" --> LAA : SAMCertifs
-"LAA" -> "LAA" : initiateInstallation(sessionId, SAMEligibilityInfos, DeviceInfo) 
- 
+"LAA" -> "LAA" : initiateInstallation(sessionId, supportedKlccs, SAMEligibilityInfos, DeviceInfo)
+
 rnote over "LAA", "End User"
-     [0] End User interactions for user intent
+     [1] End User interactions for user intent
 end rnote
 
 rnote over "LAA", "SAM SD"
-     [1b] Process executeGPSERAMScriptFile(sessionId, localScriptUri)
+     [2b] Process executeGPSERAMScriptFile(sessionId, localScriptUri)
 end rnote
  
 LAA --> "Device Application" : notification(sessionId, aspSDAid, INSTALL)

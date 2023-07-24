@@ -1,0 +1,23 @@
+@startuml
+ 
+hide footbox
+skinparam sequenceMessageAlign center
+skinparam sequenceArrowFontSize 11
+skinparam noteFontSize 11
+skinparam monochrome true
+skinparam lifelinestrategy solid
+
+LAA -> "SAM SD" : GET_DATA(SAMEligibilityInfoTag)
+"SAM SD" --> LAA : SAMEligibilityInfo  
+LAA -> "SAM SD" : GET_DATA(CRDTag)
+"SAM SD" --> LAA : CRD
+LAA -> "SAM SD" : GET_DATA(CCITag)
+"SAM SD" --> LAA : CCI
+LAA -> "SAM SD" : GET_DATA(supportedCAKlccId)
+"SAM SD" --> LAA : KlccKidKvns
+loop for each KidKvns in klcc list
+LAA -> "SAM SD" : GET_DATA(KlccKidKvn)
+"SAM SD" --> LAA : SAMCertif
+end loop
+
+@enduml

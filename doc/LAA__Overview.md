@@ -48,8 +48,8 @@ Same [sessionId](LAA__Terminology_And_Definitions.md#sessionId) SHALL be used fo
 
 Protocol details
 ----------------------
-In the following sequence diagrams, the process [1a] *executeGPSERAMScript* is defined in [GPSERAM](LAA__References.md#GPSERAM) (Protocol Overview Diagram).  The process [1b] *executeGPSERAMScriptFile* use the same data elements but is processed locally using a file. In both cases, The [LAA](LAA__Terminology_And_Definitions.md#LAA)  is able to process a script containing APDUs.
-See also "[End User](LAA__Terminology_And_Definitions.md#EU) interactions for user intent" section for process [0]
+In the following sequence diagrams, the process [2a] *executeGPSERAMScript* is defined in [GPSERAM](LAA__References.md#GPSERAM) (Protocol Overview Diagram).  The process [2b] *executeGPSERAMScriptFile* use the same data elements but is processed locally using a file. In both cases, The [LAA](LAA__Terminology_And_Definitions.md#LAA)  is able to process a script containing APDUs.
+See also "[End User](LAA__Terminology_And_Definitions.md#EU) interactions for user intent" section for process [1]
 
 ### Installation
 
@@ -71,18 +71,9 @@ In this mode, *install* is not sent to the [SAM SM](LAA__Terminology_And_Definit
 
 The notification SHALL contain *samServiceScriptResp* parameter in this mode because the response is not provided through [GPSERAM](LAA__References.md#GPSERAM) script.
 
-#### SAM script commands
+#### SAM commands install sequence
 
-Typically a SAM script contains at least the following APDU commands:
--	INSTALL [for install] in order to create the ASP SD
--	INSTALL [for personalization] + STORE DATA(s) in order to personalize this ASP SD. The result shall be used by the SAM SM in order to retrieve the personalized ASP SD keys.
--	INSTALL [for load] + LOAD(s) in order to load SAM Applet(s)
--	INSTALL [for install and make selectable] in order to make the SAM Applet(s) selectable
-
-A SAM script should also contain the following commands:
--	INSTALL [for install] in order to install the ARA-C
--	INSTALL [for personalization] + STORE DATA(s) in order to add a new access rule on the ARA-C.
-These APDU commands are defined in [GP Card Spec](LAA__References.md#GPC_SPE).
+Typical SAM commands install sequence is defined in [SAM Configuration](LAA__References.md#SAMCONF) Annex C
 
 ### Personalization
 
