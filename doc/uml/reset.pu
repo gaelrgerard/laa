@@ -25,9 +25,9 @@ LAA -> "SAM SD" : GET_DATA(SAMServicesListTag)
 
 loop for each SAM service in list
  
-LAA --> "Device application" : notification(sessionId, aspSDAid, DELETE)
+LAA --> "Device application" : notification(sessionId, samServiceIdentifier, DELETE)
  
-LAA --> "SAM SM" : notification(SAMSM_FQDN, sessionId, aspSDAid, DELETE)
+LAA --> "SAM SM" : notification(SAMSM_FQDN, sessionId, samServiceIdentifier, DELETE)
 end loop
 
 @enduml

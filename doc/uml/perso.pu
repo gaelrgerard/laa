@@ -18,6 +18,6 @@ rnote over "LAA", "SAM SM"
 end rnote
  
  
-LAA --> "Device Application" : notification(sessionId, aspSDAid, PERSO)
-LAA --> "SAM SM" : notification(sessionId, aspSDAid, PERSO)
+LAA --> "Device Application" : notification(sessionId, samServiceIdentifier, PERSO)
+LAA --> "SAM SM" : notification(sessionId, samServiceIdentifier, PERSO)
 @enduml

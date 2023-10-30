@@ -1,35 +1,27 @@
 @startuml
- 
+
 hide footbox
 skinparam sequenceMessageAlign center
 skinparam sequenceArrowFontSize 11
 skinparam noteFontSize 11
 skinparam monochrome true
 skinparam lifelinestrategy solid
-
-
+ 
 rnote over "End User", "Device Application"
-     "End User installs a new Device Application
-      containing a SAM script"
+     End User deletes Device Application
 end rnote
 
-"Device application" -> LAA : install(sessionId, samSMFQDN, localScriptUri)
-
-rnote over "LAA", "SAM SD"
-     [0] Process getSAMEligibilityInfos
-end rnote
-
-"LAA" -> "LAA" : initiateInstallation(sessionId, supportedSamCaIdentifiers, SAMEligibilityInfos, DeviceInfo)
+"Device Application" -> LAA : delete(sessionId, samSMFQDN, samServiceName)
 
 rnote over "LAA", "End User"
-     [1] End User interactions for user intent
+     [0] End User interactions for user intent
 end rnote
+ 
+"LAA" -> "SAM SD" : DELETE_SAM_SERVICE(aspSDAid) 
+"SAM SD" --> LAA : deleteStatusWord
 
-rnote over "LAA", "SAM SD"
-     [2b] Process executeGPSERAMScriptFile(sessionId, localScriptUri)
-end rnote
  
-LAA --> "Device Application" : notification(sessionId, samServiceIdentifier, INSTALL)
+LAA --> "Device Application" : notification(sessionId, samServiceIdentifier, DELETE)
  
-LAA --> "SAM SM" : notification(sessionId, samServiceIdentifier, INSTALL)
+LAA --> "SAM SM" : notification(SAMSM_FQDN, sessionId, samServiceIdentifier, DELETE)
 @enduml

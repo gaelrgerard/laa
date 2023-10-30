@@ -24,7 +24,7 @@ LAA -> "ASP SD" : GET_DATA(SAMServiceInfoTag)
 "SAM SD" --> LAA : deleteStatusWord
 
  
-LAA --> "Device application" : notification(sessionId, aspSDAid, DELETE)
+LAA --> "Device application" : notification(sessionId, samServiceIdentifier, DELETE)
  
-LAA --> "SAM SM" : notification(SAMSM_FQDN, sessionId, aspSDAid, DELETE)
+LAA --> "SAM SM" : notification(SAMSM_FQDN, sessionId, samServiceIdentifier, DELETE)
 @enduml

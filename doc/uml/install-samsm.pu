@@ -18,7 +18,7 @@ rnote over "LAA", "SAM SD"
      [0] Process getSAMEligibilityInfos
 end rnote
 
-"LAA" -> "SAM SM" : initiateInstallation(sessionId, supportedKlccs, SAMEligibilityInfos, DeviceInfo)
+"LAA" -> "SAM SM" : initiateInstallation(sessionId, supportedSamCaIdentifiers, SAMEligibilityInfos, DeviceInfo)
 "SAM SM" -> "SAM SM" : retrieveOrGenerateScript(sessionId)
 "SAM SM" --> LAA : samEligibilityResponse(gpseramUri)
  
@@ -30,7 +30,7 @@ rnote over "LAA", "SAM SM"
      [2a] Process executeGPSERAMScript(sessionId, gpseramUri)
 end rnote
  
-LAA --> "Device application" : notification(sessionId, aspSDAid, INSTALL)
+LAA --> "Device application" : notification(sessionId, samServiceIdentifier, INSTALL)
  
-LAA --> "SAM SM" : notification(sessionId, aspSDAid, INSTALL)
+LAA --> "SAM SM" : notification(sessionId, samServiceIdentifier, INSTALL)
 @enduml
